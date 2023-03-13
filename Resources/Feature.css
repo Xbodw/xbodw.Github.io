@@ -1,10 +1,11 @@
 p {
   color: #FFFFFF
+  float: right
 }
 body {
   Background-color: #000000
 }
 img {
-  width: 70
-  height: 70
+  width: 40
+  height: 40
 }
