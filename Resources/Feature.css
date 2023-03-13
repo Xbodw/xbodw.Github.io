@@ -1,11 +1,18 @@
-input {
-  color: #FFFFFF
-  float: left
+.Home {
+  color: #FFFFFF;
+  float: right;
+  border: 1px solid #00f;
+}
+.Down {
+  color: #FFFFFF;
+  float: right;
+  border: 1px solid #00f;
 }
 body {
-  Background-color: #000000
+  Background-color: #000000;
+  color: #000000;
 }
 img {
-  width: 40
+  width: 40;
   height: 40
 }
