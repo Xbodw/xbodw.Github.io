@@ -1,6 +1,13 @@
 body {
     background-color: #FFFFFF;
 }
+a {
+    text-decoration:none;
+}
+
+span {
+    text-align:center;
+}
 .bk {
     background-color: #cde1be;
     height: 120px;
