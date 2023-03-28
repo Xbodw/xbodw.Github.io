@@ -24,7 +24,7 @@ body {
     position: absolute;
     top: 0px;
     left: 250px;
-    float:right;
+    float:left;
 }
 .bk a{
     display:block;
