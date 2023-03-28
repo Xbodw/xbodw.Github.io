@@ -7,9 +7,13 @@
     top: 0px;
     left: 0;
 }.bk li{
-    float:left;
+    float:right;
     width:75px;
     text-align:center;
+}
+}.bk img{
+    flort:left;
+    width:60px;
 }
 .ul_top{
     list-style: none;
