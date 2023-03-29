@@ -32,7 +32,7 @@ span {
     position: absolute;
     top: 0px;
     left: 250px;
-}
+}    
 .bk a{
     display:block;
     color:black;
@@ -43,4 +43,10 @@ span {
 .bk a:hover{
     color:white;
     background:black;
+}
+
+h1 {
+    text-align: center;
+    align: center;
+    display: block;
 }
