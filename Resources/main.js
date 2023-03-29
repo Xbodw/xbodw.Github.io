@@ -12,8 +12,8 @@ var AddElement=function(ElementName,GetElement) {
   return result;
 }
 
-var LoadingPageLevel(){
-  var adder= `<div id="preload" style="@keyframes loader {
+var LoadingPageLevel=function(){
+  var adder= `<div id="preload"><style type="text/css">@keyframes loader {
     1% {
         left: -10%;
         opacity: 1;
@@ -79,7 +79,7 @@ var LoadingPageLevel(){
  
         #preload span:nth-child(6) {
             animation-delay: 0;
-        } ">
+        }</style>
         <span></span>
         <span></span>
         <span></span>
@@ -91,5 +91,9 @@ var LoadingPageLevel(){
     add.innerHTML = adder;
     document.body.appendChild(add);
 }
+
+var DeleteLoadingPageLevel() {
+  document.querySelector('div[id="preload"]').remove();
+  )
   
  
