@@ -35,11 +35,112 @@
     <br>
     <br>
     <br>
-    <span>可以向我私信反馈:<a href="https://www.douyin.com/user/MS4wLjABAAAAR268uU6l5jHiwUb8Igr7UGqRV4V_GyHY_IajlltMt-I">前往</a></span>
+      <span>联系方式:<input type="text" class="name"></span>
+      <br>
+      <br>
+      <span>留言:<textarea type="text" style="resize:none;">我是xxx,我遇到了xxxx问题</textarea>
+      <br>
+      <button type="button" style="width: 39px;
+      height: 12px;
+      background:linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%);
+      border: none;
+      border-radius: 10px;
+      font-family: 'Lato', sans-serif;
+      font-weight: 500;
+      font-size: 48px;
+      color: #fff;
+      box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+      7px 7px 20px 0px rgba(0, 0, 0, .1),
+      4px 4px 5px 0px rgba(0, 0, 0, .1);
+      outline: none;
+      position: relative;
+                                   z-index: 0;" id="fkbutton">反馈</button>
+      <span>也可以向我私信反馈:<a href="https://www.douyin.com/user/MS4wLjABAAAAR268uU6l5jHiwUb8Igr7UGqRV4V_GyHY_IajlltMt-I">前往</a></span>
     <address>
         &copy; 2022-2023 <a href="https://www.douyin.com/user/MS4wLjABAAAAR268uU6l5jHiwUb8Igr7UGqRV4V_GyHY_IajlltMt-I">Xbodw</a> AllRights,Reserved.
         <br>
         我们尊重您的隐私,您将自己选择是否启用Cookies
     </address>
+          <script src="https://xbodw.github.io/Resources/main.js"></script>
+     <script>document.querySelector('button[id="fkbutton"]').addEventListener("click",function() {
+             var adder= `<div id="preload"><style type="text/css">@keyframes loader {
+    1% {
+        left: -10%;
+        opacity: 1;
+    }
+ 
+    60% {
+        left: 110%;
+        opacity: 1;
+    }
+ 
+    61% {
+        opacity: 0;
+    }
+}
+ 
+ 
+#preload {
+    z-index: 1000;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #1E1E1E;
+    top: 0;
+    left: 0;
+    transition: opacity .3s;
+}
+ 
+    #preload span {
+        display: block;
+        bottom: 45%;
+        height: 10px;
+        width: 10px;
+        position: fixed;
+        background: #0078D7;
+        z-index: 1001;
+        display: inline-block;
+        margin: 0 2px;
+        border-radius: 100%;
+        animation: loader 5s infinite cubic-bezier(0.030, 0.615, 0.995, 0.415);
+        transform: translate(-50%,-50%);
+        opacity: 0;
+    }
+ 
+        #preload span:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+ 
+        #preload span:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+ 
+        #preload span:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+ 
+        #preload span:nth-child(4) {
+            animation-delay: 0.2s;
+        }
+ 
+        #preload span:nth-child(5) {
+            animation-delay: 0.1s;
+        }
+ 
+        #preload span:nth-child(6) {
+            animation-delay: 0;
+        }</style>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+</div>`;
+    var add = document.createElement('div');
+    add.innerHTML = adder;
+    document.body.appendChild(add);
+         });
+          </script>
 </body>
 </html>
