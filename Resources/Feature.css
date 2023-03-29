@@ -44,8 +44,13 @@ span {
     background:black;
 }
 
+.docmain {
+    width:800px;
+    margin: 0 auto;
+}
+
 h1 {
-    text-align: center;
-    align: center;
+    text-align: left;
+    align: left;
     display: block;
 }
