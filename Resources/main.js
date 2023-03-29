@@ -94,6 +94,6 @@ var LoadingPageLevel=function(){
 
 var DeleteLoadingPageLevel() {
   document.querySelector('div[id="preload"]').remove();
-  )
+}
   
  
