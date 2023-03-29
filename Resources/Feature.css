@@ -8,6 +8,8 @@ a {
 
 span {
     text-align:center;
+    align:center;
+    display:block;
 }
 .bk {
     background-color: #cde1be;
