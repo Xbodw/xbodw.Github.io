@@ -4,6 +4,9 @@ body {
 a {
     text-decoration: none;
     color: red;
+    text-align: center;
+    align: center;
+    display: block;
 }
 
 span {
