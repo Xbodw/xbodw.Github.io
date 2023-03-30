@@ -60,3 +60,15 @@ p.info {
     border: 1px solid #1890ff;
     border-radius: .4rem;
 }
+
+footer {
+    position:absolute;
+    color:#fff;
+    bottom:0;
+    width:100%;
+    height:100px;
+    line-height:100px;
+    text-align:right;
+    margin: 0 auto;
+    background-color: #000;
+}
