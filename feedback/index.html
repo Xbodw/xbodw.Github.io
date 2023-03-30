@@ -10,6 +10,10 @@
           var title=document.querySelector('#title').value;
           var body=document.querySelector('#body').value;
            window.location.href= "mailto:xbodwxbodw@outlook.com?subject=" + title + "&body=" + body;
+            var h=document.querySelector('#submit').parentNode;
+            document.querySelector('#title').remove();
+            document.querySelector('#body').remove();
+           document.querySelector('#submit').innerHTML = `<span>感谢提交</span>`;
           }
     </script>
     <title>Flutas|帮助</title>
