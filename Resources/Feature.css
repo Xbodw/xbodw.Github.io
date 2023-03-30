@@ -12,26 +12,28 @@ span {
     align: left;
 }
 .bk {
-    background-color: #cde1be;
+    background-color: #FFFFFF;
     height:60px;
     width: 100%;
     line-height: 25px;
     position: fixed;
     top: 0px;
+    left: 1px;
 }.bk li{
     float:center;
     width:75px;
     text-align:center;
+    display:inline-block;
 }
 .ul_top{
     list-style: none;
     position: absolute;
     top: 0px;
-    left: 250px;
+    left: 50px;
 }    
 .bk a{
     display:block;
-    color:black;
+    color:white;
     text-decoration: none;
     width: 80px;
     line-height: 30px;
