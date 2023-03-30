@@ -9,9 +9,8 @@ a {
 }
 
 span {
-    text-align: center;
-    align: center;
-    display: block;
+    text-align: left;
+    align: left;
 }
 .bk {
     background-color: #cde1be;
