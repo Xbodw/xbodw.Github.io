@@ -13,10 +13,10 @@ span {
 }
 .bk {
     background-color: #cde1be;
-    height: 120px;
+    height:60px;
     width: 100%;
     line-height: 25px;
-    position: absolute;
+    position: fixed;
     top: 0px;
 }.bk li{
     float:right;
