@@ -19,7 +19,7 @@ span {
     position: fixed;
     top: 0px;
 }.bk li{
-    float:right;
+    float:center;
     width:75px;
     text-align:center;
 }
