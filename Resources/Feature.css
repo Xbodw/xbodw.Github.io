@@ -63,7 +63,7 @@ p.info {
 }
 
 footer {
-    position: absolute;
+    position: fixed;
             left: 0px;
             bottom: 0px;
             width: 100%;
@@ -74,7 +74,7 @@ footer {
 }
 
 button{
-	            background-color:#f66f6a;
+	            background-color:#A020F0;
 	            color:white;
 	            width: 40px;
 	            height: 25px;
