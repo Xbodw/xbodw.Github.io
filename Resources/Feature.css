@@ -22,7 +22,7 @@ span {
     left: 1px;
 }.bk li{
     float:center;
-    width:75px;
+    width:50px;
     text-align:center;
     display:inline-block;
 }
@@ -30,13 +30,13 @@ span {
     list-style: none;
     position: absolute;
     top: 0px;
-    left: 50px;
+    right: 0px;
 }    
 .bk a{
     display:block;
     color:black;
     text-decoration: none;
-    width: 80px;
+    width: 50px;
     line-height: 30px;
 }
 .bk a:hover{
