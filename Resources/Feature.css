@@ -40,8 +40,7 @@ span {
     line-height: 30px;
 }
 .bk a:hover{
-    color:white;
-    background:black;
+    color:rgba(252, 77, 80, 0.5);
 }
 
 .docmain {
