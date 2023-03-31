@@ -7,6 +7,11 @@ a {
     text-align: left;
 }
 
+a:hover {
+    text-decoration: underline;
+    color: #00FFFF;
+}
+
 span {
     text-align: left;
     align: left;
@@ -14,7 +19,7 @@ span {
 .bk {
     background-color: #f2f2f2;
     color: #000000;
-    height:60px;
+    height:70px;
     width: 100%;
     line-height: 25px;
     position: fixed;
