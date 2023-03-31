@@ -92,12 +92,12 @@ var LoadingPageLevel=function(){
     document.body.appendChild(add);
 }
 
-var DeleteLoadingPageLevel() {
+var DeleteLoadingPageLevel= function() {
   document.querySelector('div[id="preload"]').remove();
 }
 
-function check() {
-        var userAgentInfo=navigator.userAgent;
+var checkm=function() {
+  var userAgentInfo=navigator.userAgent;
         var Agents =new Array("Android","iPhone","SymbianOS","Windows Phone","iPad","iPod");
         var flag=true;
         for(var v=0;v<Agents.length;v++) {
@@ -106,7 +106,14 @@ function check() {
              break;
            }
          }
-         return flag;
-        }
-  
+         if(flag == false) {
+            window.location.pathname = "/AndroidNotch.html";
+         } else {
+           DeleteLoadingPageLevel();
+         }
+}
+var check=function() {
+        LoadingPageLevel();
+        setTimeout("checkm();", 3000 )
+}
  
