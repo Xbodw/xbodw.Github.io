@@ -41,6 +41,12 @@
 //This script by Xbodw.
 //此脚本由Xbodw编写，请勿盗用!
 
+var submit=function() {
+    var title=document.querySelector('#title').value;
+    var body=document.querySelector('#body').value;
+    window.location.href= "mailto:xbodwxbodw@outlook.com?subject=" + title +"&body=" + body;
+}
+
 var TapPage=function(Page) {
   window.location.pathname=path;
 }
