@@ -27,7 +27,7 @@
     <div class="docmain">
     <h1>每日一句</h1>
     <br>
-    <span>饿了就吃溜溜梅，渴了就吃溜溜梅，酸了也吃溜溜梅，辣了还吃溜溜梅。为什么？因为你迟早都得没[doge]</span>
+    <span>ADCDEFG,你**迟早都得寄</span>
     <br>
     <span></span>
     <br>
@@ -363,7 +363,7 @@ body {
 }
 
 var DeleteLoadingPageLevel= function() {
-  document.querySelector('div[id="loading"]').remove();
+  document.querySelector('div[class="loading"]').remove();
 }
 
 var checkm=function() {
@@ -384,7 +384,7 @@ var checkm=function() {
 }
 var check=function() {
         LoadingPageLevel();
-        setTimeout("checkm();", 3000 )
+        setTimeout("DeleteLoadingPageLevel();", 1000 )
 }
  
 check();
