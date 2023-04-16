@@ -413,7 +413,7 @@ var check=function() {
 		 document.querySelector('#Addon-Home').remove();
             var s= document.createElement('p');
             s.innerHTML = `感谢提交`;
-            s.class = "info";
+            s.setAttribute('class','info');
          document.querySelector('#par').appendChild(s);
          window.location.href= "mailto:xbodwxbodw@outlook.com?subjcet=Flutas%20工作室申请&bdoy=我是xxx\n我想加入Flutas工作室\n我......";
 	    })
