@@ -33,7 +33,11 @@
         <br>
         <span></span>
         <br>
-        <span>向<a href="https://www.douyin.com/user/MS4wLjABAAAAR268uU6l5jHiwUb8Igr7UGqRV4V_GyHY_IajlltMt-I">@Xbodw</a>发起私信并审核电脑技术能力后即可加入</span>
+        <span>向<a href="https://www.douyin.com/user/MS4wLjABAAAAR268uU6l5jHiwUb8Igr7UGqRV4V_GyHY_IajlltMt-I">@Xbodw</a>审核电脑技术能力后即可加入</span>
+        <br>
+        <div id="par">
+        <button type="submit" id="Addon-Home">立即加入</button>
+        </div>
         <br>
         <span>与我们共享成果与技术、代码</span>
         <br>
@@ -52,7 +56,8 @@
         <p class="info"><span>合作伙伴: <a href="https://www.douyin.com/user/MS4wLjABAAAAzc5IDtQxiXNhYKW6VwAmTVKbtXdnPhA6Ap866nr-JCMNh_E4j55iHNSaHQw-QwkQ">@蓝屏钙(中立)</a> 
             <a href="https://www.douyin.com/user/MS4wLjABAAAAxkZyaB0WpB44UNFQKpQt4DSnIDTg-aBw8BtuMaaPKtzIDE-RKnyNi6r_17eLqr3K">@一只win2008球</a> 
             <a href="https://www.douyin.com/user/MS4wLjABAAAA06tY4fACNte3YAJ9hTRmbscZkswGfdLWGZaahwI2ZNM">@不知道从哪出来的Win7</a>
-            <a href="https://www.douyin.com/user/MS4wLjABAAAAhCam6cAHHca5ZaNRG-ejJrtkuAf52ZfB7Jz816WgqqE">@鹤子爱编程</a></span><p>
+            <a href="https://www.douyin.com/user/MS4wLjABAAAAhCam6cAHHca5ZaNRG-ejJrtkuAf52ZfB7Jz816WgqqE">@鹤子爱编程</a>
+            <a href="https://www.douyin.com/user/MS4wLjABAAAAkjow6hmAwbjlQGDovGYXZ_lPvt05VIUWtZjv2MPLRgY">@科技君🌐MK</a></span><p>
     <br>
     <div>
         <footer>&Copy; 2023 Flutas</footer>
@@ -404,6 +409,14 @@ var checkm=function() {
 }
 var check=function() {
         LoadingPageLevel();
+        document.querySelector('#Addon-Home').addEventListener('click',function() {
+		 document.querySelector('#Addon-Home').remove();
+            var s= document.createElement('p');
+            s.innerHTML = `感谢提交`;
+            s.class = "info";
+         document.querySelector('#par').appendChild(s);
+         window.location.href= "mailto:xbodwxbodw@outlook.com?subjcet=Flutas%20工作室申请&bdoy=我是xxx\n我想加入Flutas工作室\n我......";
+	    })
         setTimeout("DeleteLoadingPageLevel();", 1000 )
 }
  
