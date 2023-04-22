@@ -107,3 +107,8 @@ button{
             button:hover{
 	            background-color: #a54b4a;
             }
+
+code {
+	font-family: "Microsoft Yahei UI Light";
+	font-size: 85%;
+}
