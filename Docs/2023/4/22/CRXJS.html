@@ -169,17 +169,50 @@ var delay = function() {
         delay()
     }, 100)
 }
-window.onhashchange = delay(); <
-/code> <
-/pre> <
-br > < br > < br >
-    <
-    span > 最后附上manifest.json < /span> <
-    br >
-    <
-    pre >
-    <
-    code type = "json" > {
+window.onhashchange = delay(); 
+</code> 
+</pre><br><br><br>
+	    <span>Feature.css层叠样式表:</span>
+	    <pre>
+	    <code type="css">
+	    body {
+ background: white;
+}
+.info {
+ padding: .5rem 1rem;
+    background-color: rgba(24,144,255,0.1);
+    border: 1px solid #1890ff;
+    border-radius: .4rem;
+}
+
+.main {
+    width: 300px;
+    margin: 0 auto;
+}
+
+html {
+font-family: "Segoe UI", Arial, "Microsoft Yahei", sans-serif;
+    font-size: 75%;
+}
+
+button{
+	            background-color:#A020F0;
+	            color:white;
+	            height: 25px;
+	            border:0;
+	            font-size: 16px;
+	            box-sizing: content-box;				
+                border-radius: 5px;
+            }
+            button:hover{
+	            background-color: #a54b4a;
+            }
+	    </code>
+	    </pre>
+	    <br><br><br>
+<span> 附上CRX程序包配置文件manifest.json</span><br><pre>
+<code type="json">
+{
         "manifest_version": 2,
         "name": "Flutas VideoDownLoad",
         "description": "使用这款插件,可以无水印下载抖音视频!网页端福音!",
@@ -214,6 +247,8 @@ br > < br > < br >
 </code>
 
 </pre>
+	    <br><br>
+	    <span>效果展示图:</span><br><img src="s.png" width="500" height"375">
     </div>
     <br>
     <footer>&Copy; 2023 Flutas</footer>
