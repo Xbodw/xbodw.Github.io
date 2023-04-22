@@ -41,7 +41,7 @@
     <br>
     <pre>
  <code type="html">
-    &lt;!DOCTYOE html&gt;
+&lt;!DOCTYOE html&gt;
 &lt;html lang=&quot;zh&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -100,8 +100,8 @@
 <pre>
 <code type="javascript">
 function AddDownLoadButton() {
-    if(window.location.host == "www.douyin.com") {
-    var button= `&lt;div class=&quot;DownLoader&quot;&gt;
+    if (window.location.host == "www.douyin.com") {
+        var button = `&lt;div class=&quot;DownLoader&quot;&gt;
   &lt;div class=&quot;CT3y5rWY jtnwH7Q7 UgpbNsc3&quot; data-e2e-state=&quot;video-player-is-collected&quot; data-e2e=&quot;video-player-collect&quot;&gt;
     &lt;div class=&quot;ywWMyrCr&quot;&gt;
       &lt;div class=&quot;H2e1f_wM&quot;&gt;
@@ -111,93 +111,106 @@ function AddDownLoadButton() {
     &lt;div class=&quot;qc4FQDvn eEBI4Egz&quot;&gt;下载&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;`;
-    var add = document.querySelector('div[class="ZfrXkYoG"]');
-    add.innerHTML = button;
-    document.querySelector('div[class="DownLoader"]').addEventListener('click', function() {
-        if(window.location.host == "www.douyin.com") {}
-         else {
-             alert("网站可能不是抖音!");
-             return;
-         }
-        try {
-        var link = document.querySelector('source[src*="&aid="]').getAttribute('src');
-     var part = document.querySelector('source[src*="&aid="]').parentElement.getAttribute('mediatype');
-     if(part == "video") {
-      //var link=document.querySelector('source[src*="id="][src*="v3-web"]').getAttribute('src');
-      var date = new Date();
-      var year = date.getFullYear();
-      var month = date.getMonth() + 1;
-      var day = date.getDate();
-      var hour = date.getHours();
-      var minute = date.getMinutes();
-      var second = date.getSeconds();
-      var filename="视频_" + year + month + day + hour + minute + second + ".mp4";
-      console.log("视频正在合成，完成后将自动保存.");fetch(link).then(res => res.blob()).then(blob => {
-      const a = document.createElement('a');
-      document.body.appendChild(a);
-      a.style.display = 'none';
-      const url = window.URL.createObjectURL(blob);
-      a.href = url;
-      a.download = filename;
-      a.click();
-      document.body.removeChild(a)
-      window.URL.revokeObjectURL(url);
-      });
-     } else {
-         alert("获取视频下载链接失败，可能是接口在维护或脚本版本过低!");
-     }
-     } catch {
-         alert("获取视频下载链接失败，可能是接口在维护或脚本版本过低!");
-     }
-    });
+        var add = document.querySelector('div[class="ZfrXkYoG"]');
+        add.innerHTML = button;
+        document.querySelector('div[class="DownLoader"]').addEventListener(
+            'click',
+            function() {
+                if (window.location.host == "www.douyin.com") {} else {
+                    alert("网站可能不是抖音!");
+                    return;
+                }
+                try {
+                    var link = document.querySelector(
+                        'source[src*="&aid="]').getAttribute('src');
+                    var part = document.querySelector(
+                            'source[src*="&aid="]').parentElement
+                        .getAttribute('mediatype');
+                    if (part == "video") {
+                        //var link=document.querySelector('source[src*="id="][src*="v3-web"]').getAttribute('src');
+                        var date = new Date();
+                        var year = date.getFullYear();
+                        var month = date.getMonth() + 1;
+                        var day = date.getDate();
+                        var hour = date.getHours();
+                        var minute = date.getMinutes();
+                        var second = date.getSeconds();
+                        var filename = "视频_" + year + month + day + hour +
+                            minute + second + ".mp4";
+                        console.log("视频正在合成，完成后将自动保存.");
+                        fetch(link).then(res => res.blob()).then(blob => {
+                            const a = document.createElement('a');
+                            document.body.appendChild(a);
+                            a.style.display = 'none';
+                            const url = window.URL.createObjectURL(
+                                blob);
+                            a.href = url;
+                            a.download = filename;
+                            a.click();
+                            document.body.removeChild(a)
+                            window.URL.revokeObjectURL(url);
+                        });
+                    } else {
+                        alert("获取视频下载链接失败，可能是接口在维护或脚本版本过低!");
+                    }
+                } catch {
+                    alert("获取视频下载链接失败，可能是接口在维护或脚本版本过低!");
+                }
+            });
     }
-    }
-    var delay = function(){
-    if(document.querySelector('div[class="ZfrXkYoG"]') != null) {
-      if(document.querySelector('div[class="DownLoader"]') == null) {
-        AddDownLoadButton();
-      }
-    }
-	setTimeout(function(){delay()}, 100)
-    }
-    window.onhashchange = delay();
-</code>
-</pre>
-<br><br><br>
-<span>最后附上manifest.json</span>
-<br>
-<pre>
-<code type="json">
-{
-    "manifest_version": 2,
-    "name": "Flutas VideoDownLoad",
-    "description": "使用这款插件,可以无水印下载抖音视频!网页端福音!",
-    "version": "2.3",
-    "icons": {"256": "icon/icon.ico"},
-
-    "permissions": [
-        "storage",
-        "tabs"
-    ],
-
-    "options_page": "",
-    "page_action": {  
-    	"default_icon": "icon/icon.ico" ,
-    	"default_title": "Flutas VideoDownLoad",
-    	"default_popup": "Config.html" 
-  	},
-    
-    "options_ui": {
-    "page": "Options.html",
-    "open_in_tab": true
-    },
-
-    "content_scripts": [{
-        "matches": ["*://www.douyin.com/*"],
-        "js": ["js/content.js"],
-        "run_at": "document_end"
-    }]
 }
+var delay = function() {
+    if (document.querySelector('div[class="ZfrXkYoG"]') != null) {
+        if (document.querySelector('div[class="DownLoader"]') == null) {
+            AddDownLoadButton();
+        }
+    }
+    setTimeout(function() {
+        delay()
+    }, 100)
+}
+window.onhashchange = delay(); <
+/code> <
+/pre> <
+br > < br > < br >
+    <
+    span > 最后附上manifest.json < /span> <
+    br >
+    <
+    pre >
+    <
+    code type = "json" > {
+        "manifest_version": 2,
+        "name": "Flutas VideoDownLoad",
+        "description": "使用这款插件,可以无水印下载抖音视频!网页端福音!",
+        "version": "2.3",
+        "icons": {
+            "256": "icon/icon.ico"
+        },
+
+        "permissions": [
+            "storage",
+            "tabs"
+        ],
+
+        "options_page": "",
+        "page_action": {
+            "default_icon": "icon/icon.ico",
+            "default_title": "Flutas VideoDownLoad",
+            "default_popup": "Config.html"
+        },
+
+        "options_ui": {
+            "page": "Options.html",
+            "open_in_tab": true
+        },
+
+        "content_scripts": [{
+            "matches": ["*://www.douyin.com/*"],
+            "js": ["js/content.js"],
+            "run_at": "document_end"
+        }]
+    }
 </code>
 
 </pre>
