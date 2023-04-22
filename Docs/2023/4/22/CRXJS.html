@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://xbodw.github.io/Resources/Feature.css">
+    <link rel="stylesheet" href="https://xbodw.github.io/Resources/code/github.min.css">
+    <link href="https://xbodw.github.io/Resources/Flutas.ico" rel="icon">
+    <script src="https://xbodw.github.io/Resources/code/highlight.min.js">
+    <meta name="xbodw.github.io" content="Flutas">
+    <title>利用html css和js编写浏览器扩展|Flutas</title>
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="bk" >
+        <h2>Flutas</h2>
+        <ul class="ul_top">
+            <li><a href="/">首页</a></li>
+            <li><a href="/Download">产品</a></li>
+            <li><a style="text-decoration: underline;" href="/Docs">文档</a></li>
+            <li><a href="/feedback">帮助</a></li>
+            
+            
+        </ul>
+    </div>
+    <div class="docmain">
+    <h1>编写浏览器扩展</h1>
+    <br>
+    <span>上一期文章说到,我做出了浏览器的视频扩展插件</span>
+    <br>
+    <span></span>
+    <br>
+    <br>
+    <span>今天就给大家分享这个浏览器扩展的所有代码</span>
+    <br><br>
+    <br>
+    <span>点击扩展按钮打开html:(Config.html)</span>
+    <br>
+    <pre>
+ <code type="html">
+    &lt;!DOCTYOE html&gt;
+&lt;html lang=&quot;zh&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css\Feature.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div width=&quot;60&quot; class=&quot;main&quot;&gt;&lt;h2&gt;Flutas VideoDownLoad&lt;/h2&gt;
+&lt;span&gt;Flutas VideoDownLoad 扩展插件&lt;/span&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;span&gt;版本 2.3&lt;/span&gt;
+&lt;br&gt;
+&lt;span&gt;Powered by Xbodw.&lt;/span&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;p class=&quot;info&quot;&gt;&lt;a href=&quot;Options.html&quot;&gt;关于 Flutas VideoDownLoad 2.3&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+ </code>
+</pre>
+<br><br>
+<span>扩展选项界面与关于界面(ooptions.html)</span>
+<br>
+<pre>
+<code type="html">
+&lt;!DOCTYOE html&gt;
+&lt;html lang=&quot;zh&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css\Feature.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div width=&quot;60&quot; class=&quot;main&quot;&gt;&lt;h2&gt;Flutas VideoDownLoad&lt;/h2&gt;
+&lt;span&gt;Flutas VideoDownLoad 扩展插件 - 关于&lt;/span&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;span&gt;版本 2.3&lt;/span&gt;
+&lt;br&gt;
+&lt;span&gt;Powered by Xbodw.&lt;/span&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;span&gt;Flutas VideoDownLoad是一款可以帮助用户无水印下载抖音视频的插件&lt;/span&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;span&gt;由于技术原因,我们暂时无法锁定搜寻到的链接一定是您正在播放中的视频&lt;/span&gt;
+&lt;br&gt;
+&lt;span&gt;(抖音拥有多个视频src链接无法确定)&lt;/span&gt;
+&lt;br&gt;
+&lt;span&gt;此Bug仅在抖音首页会出现,用户主页和搜索页面下载视频正常不会出现上图情况&lt;/span&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;button id=&quot;save&quot; onclick=&quot;window.location.href=&#x27;https://xbodw.github.io/feedback&#x27;&quot;&gt;寻求帮助&lt;/button&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code>
+</pre>
+<br><br>
+<span>content.js触发脚本</span>
+<br>
+<pre>
+<code type="javascript">
+function AddDownLoadButton() {
+    if(window.location.host == "www.douyin.com") {
+    var button= `&lt;div class=&quot;DownLoader&quot;&gt;
+  &lt;div class=&quot;CT3y5rWY jtnwH7Q7 UgpbNsc3&quot; data-e2e-state=&quot;video-player-is-collected&quot; data-e2e=&quot;video-player-collect&quot;&gt;
+    &lt;div class=&quot;ywWMyrCr&quot;&gt;
+      &lt;div class=&quot;H2e1f_wM&quot;&gt;
+        &lt;svg width=&quot;40&quot; height=&quot;30&quot; fill=&quot;none&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; class=&quot;F6D9A5IA&quot; viewBox=&quot;0 -0.5 18.83 12.91&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; clip-rule=&quot;evenodd&quot; d=&quot;M2.579 1a1 1 0 011-1h12a1 1 0 011 1v9.036a.5.5 0 01-.415.493 2 2 0 01.861.24l1.863 1.013c.182.1.111.376-.096.376H.365c-.207 0-.278-.277-.096-.376l1.863-1.013a2 2 0 01.861-.24.5.5 0 01-.414-.493V1zm6.3 2.6a.6.6 0 011.2 0V6H11.9a.3.3 0 01.222.502L9.8 9.055a.3.3 0 01-.444 0L7.035 6.502A.3.3 0 017.257 6H8.88V3.6z&quot; fill=&quot;#2F3035&quot; fill-opacity=&quot;0.9&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;qc4FQDvn eEBI4Egz&quot;&gt;下载&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;`;
+    var add = document.querySelector('div[class="ZfrXkYoG"]');
+    add.innerHTML = button;
+    document.querySelector('div[class="DownLoader"]').addEventListener('click', function() {
+        if(window.location.host == "www.douyin.com") {}
+         else {
+             alert("网站可能不是抖音!");
+             return;
+         }
+        try {
+        var link = document.querySelector('source[src*="&aid="]').getAttribute('src');
+     var part = document.querySelector('source[src*="&aid="]').parentElement.getAttribute('mediatype');
+     if(part == "video") {
+      //var link=document.querySelector('source[src*="id="][src*="v3-web"]').getAttribute('src');
+      var date = new Date();
+      var year = date.getFullYear();
+      var month = date.getMonth() + 1;
+      var day = date.getDate();
+      var hour = date.getHours();
+      var minute = date.getMinutes();
+      var second = date.getSeconds();
+      var filename="视频_" + year + month + day + hour + minute + second + ".mp4";
+      console.log("视频正在合成，完成后将自动保存.");fetch(link).then(res => res.blob()).then(blob => {
+      const a = document.createElement('a');
+      document.body.appendChild(a);
+      a.style.display = 'none';
+      const url = window.URL.createObjectURL(blob);
+      a.href = url;
+      a.download = filename;
+      a.click();
+      document.body.removeChild(a)
+      window.URL.revokeObjectURL(url);
+      });
+     } else {
+         alert("获取视频下载链接失败，可能是接口在维护或脚本版本过低!");
+     }
+     } catch {
+         alert("获取视频下载链接失败，可能是接口在维护或脚本版本过低!");
+     }
+    });
+    }
+    }
+    var delay = function(){
+    if(document.querySelector('div[class="ZfrXkYoG"]') != null) {
+      if(document.querySelector('div[class="DownLoader"]') == null) {
+        AddDownLoadButton();
+      }
+    }
+	setTimeout(function(){delay()}, 100)
+    }
+    window.onhashchange = delay();
+</code>
+</pre>
+<br><br><br>
+<span>最后附上manifest.json</span>
+<br>
+<pre>
+<code type="json">
+{
+    "manifest_version": 2,
+    "name": "Flutas VideoDownLoad",
+    "description": "使用这款插件,可以无水印下载抖音视频!网页端福音!",
+    "version": "2.3",
+    "icons": {"256": "icon/icon.ico"},
+
+    "permissions": [
+        "storage",
+        "tabs"
+    ],
+
+    "options_page": "",
+    "page_action": {  
+    	"default_icon": "icon/icon.ico" ,
+    	"default_title": "Flutas VideoDownLoad",
+    	"default_popup": "Config.html" 
+  	},
+    
+    "options_ui": {
+    "page": "Options.html",
+    "open_in_tab": true
+    },
+
+    "content_scripts": [{
+        "matches": ["*://www.douyin.com/*"],
+        "js": ["js/content.js"],
+        "run_at": "document_end"
+    }]
+}
+</code>
+
+</pre>
+    </div>
+    <br>
+    <footer>&Copy; 2023 Flutas</footer>
+    <script>
+        "use script";
+//This script by Xbodw.
+//此脚本由Xbodw编写，请勿盗用!
+
+var TapPage=function(Page) {
+  window.location.pathname=path;
+}
+
+var AddElement=function(ElementName,GetElement) {
+  var result=document.createElement(ElementName);
+  GetElement.appendChild(result);
+  return result;
+}
+
+var LoadingPageLevel=function(){
+  var adder= `<div class="loading">
+  <style><style type="text/css">html,
+bocy,
+div {
+  margin: 0;
+  padding: 0;
+}
+ 
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+ 
+.loading {
+  width: 100%;
+  height: 100%;
+  position:fixed;
+  background-color: black;
+  top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+}
+ 
+.loading i {
+  margin: auto;
+  position: absolute;
+  top: calc(50% - 40px);
+  left: calc(50% - 40px);
+  width: 80px;
+  height: 80px;
+  display: block;
+}
+ 
+.loading span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  color: black;
+}
+ 
+.loading span:after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 10px;
+  height: 10px;
+  background: var(--main, #00baff);
+  border-radius: 50%;
+}
+ 
+.loading span:nth-child(1) {
+  animation: i1 5.5s 0.2s infinite;
+}
+ 
+.loading span:nth-child(2) {
+  animation: i2 5.5s 0.4s infinite;
+}
+ 
+.loading span:nth-child(3) {
+  animation: i3 5.5s 0.6s infinite;
+}
+ 
+.loading span:nth-child(4) {
+  animation: i4 5.5s 0.8s infinite;
+}
+ 
+.loading span:nth-child(5) {
+  animation: i5 5.5s 1s infinite;
+}
+ 
+.loading span:nth-child(6) {
+  animation: i6 5.5s 1.2s infinite;
+}
+ 
+@keyframes i1 {
+  0% {
+    opacity: 1;
+    transform: rotate(190deg);
+    animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+  }
+  7% {
+    opacity: 1;
+    transform: rotate(300deg);
+    animation-timing-function: linear;
+  }
+  30% {
+    opacity: 1;
+    transform: rotate(450deg);
+    animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+  }
+  39% {
+    opacity: 1;
+    transform: rotate(645deg);
+    animation-timing-function: linear;
+  }
+  63% {
+    opacity: 1;
+    transform: rotate(800deg);
+    animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+  }
+  68% {
+    opacity: 1;
+    transform: rotate(920deg);
+    animation-timing-function: ease-in;
+  }
+  69% {
+    opacity: 0;
+    transform: rotate(930deg);
+  }
+}
+@keyframes i2 {
+  0% {
+    opacity: 1;
+    transform: rotate(180deg);
+    animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+  }
+  7% {
+    opacity: 1;
+    transform: rotate(300deg);
+    animation-timing-function: linear;
+  }
+  30% {
+    opacity: 1;
+    transform: rotate(450deg);
+    animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+  }
+  39% {
+    opacity: 1;
+    transform: rotate(645deg);
+    animation-timing-function: linear;
+  }
+  63% {
+    opacity: 1;
+    transform: rotate(800deg);
+    animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+  }
+  68% {
+    opacity: 1;
+    transform: rotate(910deg);
+    animation-timing-function: ease-in;
+  }
+  69% {
+    opacity: 0;
+    transform: rotate(920deg);
+  }
+}
+@keyframes i3 {
+  0% {
+    opacity: 1;
+    transform: rotate(170deg);
+    animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+  }
+  7% {
+    opacity: 1;
+    transform: rotate(300deg);
+    animation-timing-function: linear;
+  }
+  30% {
+    opacity: 1;
+    transform: rotate(450deg);
+    animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+  }
+  39% {
+    opacity: 1;
+    transform: rotate(645deg);
+    animation-timing-function: linear;
+  }
+  63% {
+    opacity: 1;
+    transform: rotate(800deg);
+    animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+  }
+  68% {
+    opacity: 1;
+    transform: rotate(900deg);
+    animation-timing-function: ease-in;
+  }
+  69% {
+    opacity: 0;
+    transform: rotate(910deg);
+  }
+}
+@keyframes i4 {
+  0% {
+    opacity: 1;
+    transform: rotate(160deg);
+    animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+  }
+  7% {
+    opacity: 1;
+    transform: rotate(300deg);
+    animation-timing-function: linear;
+  }
+  30% {
+    opacity: 1;
+    transform: rotate(450deg);
+    animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+  }
+  39% {
+    opacity: 1;
+    transform: rotate(645deg);
+    animation-timing-function: linear;
+  }
+  63% {
+    opacity: 1;
+    transform: rotate(800deg);
+    animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+  }
+  68% {
+    opacity: 1;
+    transform: rotate(890deg);
+    animation-timing-function: ease-in;
+  }
+  69% {
+    opacity: 0;
+    transform: rotate(900deg);
+  }
+}
+@keyframes i5 {
+  0% {
+    opacity: 1;
+    transform: rotate(150deg);
+    animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+  }
+  7% {
+    opacity: 1;
+    transform: rotate(300deg);
+    animation-timing-function: linear;
+  }
+  30% {
+    opacity: 1;
+    transform: rotate(450deg);
+    animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+  }
+  39% {
+    opacity: 1;
+    transform: rotate(645deg);
+    animation-timing-function: linear;
+  }
+  63% {
+    opacity: 1;
+    transform: rotate(800deg);
+    animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+  }
+  68% {
+    opacity: 1;
+    transform: rotate(880deg);
+    animation-timing-function: ease-in;
+  }
+  69% {
+    opacity: 0;
+    transform: rotate(880deg);
+  }
+}
+@keyframes i6 {
+  0% {
+    opacity: 1;
+    transform: rotate(140deg);
+    animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+  }
+  7% {
+    opacity: 1;
+    transform: rotate(300deg);
+    animation-timing-function: linear;
+  }
+  30% {
+    opacity: 1;
+    transform: rotate(450deg);
+    animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+  }
+  39% {
+    opacity: 1;
+    transform: rotate(645deg);
+    animation-timing-function: linear;
+  }
+  63% {
+    opacity: 1;
+    transform: rotate(800deg);
+    animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+  }
+  68% {
+    opacity: 1;
+    transform: rotate(870deg);
+    animation-timing-function: ease-in;
+  }
+  69% {
+    opacity: 0;
+    transform: rotate(880deg);
+  }
+}</style>
+    <i>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </i>
+</div>`;
+    var add = document.createElement('div');
+    add.innerHTML = adder;
+    document.body.appendChild(add);
+}
+
+var DeleteLoadingPageLevel= function() {
+  document.querySelector('div[class="loading"]').remove();
+}
+
+var checkm=function() {
+  var userAgentInfo=navigator.userAgent;
+        var Agents =new Array("Android","iPhone","SymbianOS","Windows Phone","iPad","iPod");
+        var flag=true;
+        for(var v=0;v<Agents.length;v++) {
+           if(userAgentInfo.indexOf(Agents[v])>0) {
+             flag=false;
+             break;
+           }
+         }
+         if(flag == false) {
+            window.location.pathname = "/AndroidNotch.html";
+         } else {
+           DeleteLoadingPageLevel();
+         }
+}
+var check=function() {
+        LoadingPageLevel();
+        setTimeout("DeleteLoadingPageLevel();", 1000 )
+}
+ 
+check();
+    </script>
+    <script>
+ hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>
