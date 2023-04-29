@@ -78,14 +78,14 @@ h1 {
 
 p.info {
     padding: .5rem 1rem;
-    background-color: rgba(24,144,255,0.1);
+    background-color: #f2f2f2;
     border: 1px solid #1890ff;
     border-radius: .4rem;
 }
 
 p.into {
     padding: .5rem 1rem;
-    background-color: #FF0000;
+    background-color: #f2f2f2;
     border: 1px solid #1890ff;
     border-radius: .4rem;
 }
