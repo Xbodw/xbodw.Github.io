@@ -180,6 +180,21 @@ using System.Xml;
       </pre>
       <br>
       <br>
+	    <span>具体该如何调用呢?</span>
+	    <br><p class="into">注意!修改mbr可能会导致电脑无法正常正常启动或加载!产生的一切后果作者不承担任何责任</p>
+	    <br>
+	    <pre>
+	    <code>
+	    ChangeMBR(); //直接调用就可以
+	    
+	    ExecCmd("cmd命令名称"); //这里只要是命令都可以输入
+	    
+	    //接下来是禁用窗口右上角的关闭按钮的办法
+	    //会用到之前我们声明过的GetSystemMenu和EnabledMenuItem
+	    IntPtr hMenu = GetSystemMenu(this.Handle, 0);
+                EnableMenuItem(hMenu, SC_CLOSE, (MF_DISABLED + MF_GRAYED) | MF_ENABLED); //这样就禁用了关闭按钮
+	    </code>
+	    </pre>
       <span>以上代码可以让我们修改硬盘Mbr,也可以让我们在图形化程序中执行cmd命令.(注意,修改Mbr只能在管理员模式下才能成功;cmd命令是否以管理员身份运行取决于你写的程序是不是以管理员启动决定的</span>
       <br>
       <span>点个关注再走吧！</span>
