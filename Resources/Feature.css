@@ -83,6 +83,13 @@ p.info {
     border-radius: .4rem;
 }
 
+p.into {
+    padding: .5rem 1rem;
+    background-color: #FF0000;
+    border: 1px solid #1890ff;
+    border-radius: .4rem;
+}
+
 footer {
     position: fixed;
             left: 0px;
