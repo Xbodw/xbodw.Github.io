@@ -152,10 +152,13 @@ ul.c-list.f-bare {
     zoom: 1;
 }
 
-div {}
 
 li {
     word-break: break-word;
     /* padding: 8px 0; */
     list-style: none;
+}
+
+.docmain img {
+ width: 100%;
 }
