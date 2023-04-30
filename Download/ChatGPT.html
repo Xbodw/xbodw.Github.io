@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://xbodw.github.io\Resources\Feature.css">
+    <link href="https://xbodw.github.io\Resources\Flutas.ico" rel="icon">
+    <meta name="xbodw.github.io" content="Flutas">
+    <title>ChatGPT被Flutas做成了软件?!|Flutas</title>
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="bk" >
+	    <h2>Flutas</h2>
+        <ul class="ul_top">
+		<li><a href="/">首页</a></li>
+		<li><a style="text-decoration: underline;" href="/Download">产品</a></li>
+            <li><a href="/Docs">文档</a></li>
+            <li><a href="/feedback">帮助</a></li>
+            
+        </ul>
+    </div>
+    <div class="docmain">
+	                <br>
+			<strong>ChatGPT with Flutas</strong>
+			<br>
+      <span>我们用<a href="https://www.electronjs.org/zh">Electron</a>框架封装了ChatGPT网页版</span>
+			<br>
+	                <span>它的特点是可以以应用的形式存在于您的电脑中,无需安装浏览器即可体验<span>
+				<br>
+                    <span>安装包体积<strong>69MB</strong>,</span>
+                    <p class="info"><a href="https://pan.huang1111.cn/s/48aOFg">下载ChatGPT with Flutas <strong>3.5</strong></a></p>
+			<br>
+			<span>下载安装包后,双击即可进行安装</span>
+                    <br>
+                    <span>安装完后,打开ChatGPT聊天程序如下:</span>
+			<br><br>
+                    <img src="pss.png"><a href="https://openai.com/blog/chatgpt"></a></img>
+			<br><br>
+                    <span>不仅如此,在您的电脑没有清理浏览缓存的情况下,聊天记录可以一直保存</span>
+                    <br>
+                    <p class="info">注意! 该模型为ChatGPT 3.5,所以初始版本号为3.5,不代表之后也还是3.5!</p>
+			<br>
+			<br>
+    </div>
+    </div>
+    <br>
+    <footer>&Copy; 2023 Flutas</footer>
+	    <script>
+        "use script";
+//This script by Xbodw.
+//此脚本由Xbodw编写，请勿盗用!
+
+var TapPage=function(Page) {
+  window.location.pathname=path;
+}
+
+var AddElement=function(ElementName,GetElement) {
+  var result=document.createElement(ElementName);
+  GetElement.appendChild(result);
+  return result;
+}
+
+var LoadingPageLevel=function(){
+  var adder= `<div class="loading">
+  <style><style type="text/css">html,
+bocy,
+div {
+  margin: 0;
+  padding: 0;
+}
+ 
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+ 
+.loading {
+  width: 100%;
+  height: 100%;
+  position:fixed;
+  background-color: black;
+  top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+}
+ 
+.loading i {
+  margin: auto;
+  position: absolute;
+  top: calc(50% - 40px);
+  left: calc(50% - 40px);
+  width: 80px;
+  height: 80px;
+  display: block;
+}
+ 
+.loading span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  color: black;
+}
+ 
+.loading span:after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 10px;
+  height: 10px;
+  background: var(--main, #00baff);
+  border-radius: 50%;
+}
+ 
+.loading span:nth-child(1) {
+  animation: i1 5.5s 0.2s infinite;
+}
+ 
+.loading span:nth-child(2) {
+  animation: i2 5.5s 0.4s infinite;
+}
+ 
+.loading span:nth-child(3) {
+  animation: i3 5.5s 0.6s infinite;
+}
+ 
+.loading span:nth-child(4) {
+  animation: i4 5.5s 0.8s infinite;
+}
+ 
+.loading span:nth-child(5) {
+  animation: i5 5.5s 1s infinite;
+}
+ 
+.loading span:nth-child(6) {
+  animation: i6 5.5s 1.2s infinite;
+}
+ 
+@keyframes i1 {
+  0% {
+    opacity: 1;
+    transform: rotate(190deg);
+    animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+  }
+  7% {
+    opacity: 1;
+    transform: rotate(300deg);
+    animation-timing-function: linear;
+  }
+  30% {
+    opacity: 1;
+    transform: rotate(450deg);
+    animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+  }
+  39% {
+    opacity: 1;
+    transform: rotate(645deg);
+    animation-timing-function: linear;
+  }
+  63% {
+    opacity: 1;
+    transform: rotate(800deg);
+    animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+  }
+  68% {
+    opacity: 1;
+    transform: rotate(920deg);
+    animation-timing-function: ease-in;
+  }
+  69% {
+    opacity: 0;
+    transform: rotate(930deg);
+  }
+}
+@keyframes i2 {
+  0% {
+    opacity: 1;
+    transform: rotate(180deg);
+    animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+  }
+  7% {
+    opacity: 1;
+    transform: rotate(300deg);
+    animation-timing-function: linear;
+  }
+  30% {
+    opacity: 1;
+    transform: rotate(450deg);
+    animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+  }
+  39% {
+    opacity: 1;
+    transform: rotate(645deg);
+    animation-timing-function: linear;
+  }
+  63% {
+    opacity: 1;
+    transform: rotate(800deg);
+    animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+  }
+  68% {
+    opacity: 1;
+    transform: rotate(910deg);
+    animation-timing-function: ease-in;
+  }
+  69% {
+    opacity: 0;
+    transform: rotate(920deg);
+  }
+}
+@keyframes i3 {
+  0% {
+    opacity: 1;
+    transform: rotate(170deg);
+    animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+  }
+  7% {
+    opacity: 1;
+    transform: rotate(300deg);
+    animation-timing-function: linear;
+  }
+  30% {
+    opacity: 1;
+    transform: rotate(450deg);
+    animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+  }
+  39% {
+    opacity: 1;
+    transform: rotate(645deg);
+    animation-timing-function: linear;
+  }
+  63% {
+    opacity: 1;
+    transform: rotate(800deg);
+    animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+  }
+  68% {
+    opacity: 1;
+    transform: rotate(900deg);
+    animation-timing-function: ease-in;
+  }
+  69% {
+    opacity: 0;
+    transform: rotate(910deg);
+  }
+}
+@keyframes i4 {
+  0% {
+    opacity: 1;
+    transform: rotate(160deg);
+    animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+  }
+  7% {
+    opacity: 1;
+    transform: rotate(300deg);
+    animation-timing-function: linear;
+  }
+  30% {
+    opacity: 1;
+    transform: rotate(450deg);
+    animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+  }
+  39% {
+    opacity: 1;
+    transform: rotate(645deg);
+    animation-timing-function: linear;
+  }
+  63% {
+    opacity: 1;
+    transform: rotate(800deg);
+    animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+  }
+  68% {
+    opacity: 1;
+    transform: rotate(890deg);
+    animation-timing-function: ease-in;
+  }
+  69% {
+    opacity: 0;
+    transform: rotate(900deg);
+  }
+}
+@keyframes i5 {
+  0% {
+    opacity: 1;
+    transform: rotate(150deg);
+    animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+  }
+  7% {
+    opacity: 1;
+    transform: rotate(300deg);
+    animation-timing-function: linear;
+  }
+  30% {
+    opacity: 1;
+    transform: rotate(450deg);
+    animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+  }
+  39% {
+    opacity: 1;
+    transform: rotate(645deg);
+    animation-timing-function: linear;
+  }
+  63% {
+    opacity: 1;
+    transform: rotate(800deg);
+    animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+  }
+  68% {
+    opacity: 1;
+    transform: rotate(880deg);
+    animation-timing-function: ease-in;
+  }
+  69% {
+    opacity: 0;
+    transform: rotate(880deg);
+  }
+}
+@keyframes i6 {
+  0% {
+    opacity: 1;
+    transform: rotate(140deg);
+    animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+  }
+  7% {
+    opacity: 1;
+    transform: rotate(300deg);
+    animation-timing-function: linear;
+  }
+  30% {
+    opacity: 1;
+    transform: rotate(450deg);
+    animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+  }
+  39% {
+    opacity: 1;
+    transform: rotate(645deg);
+    animation-timing-function: linear;
+  }
+  63% {
+    opacity: 1;
+    transform: rotate(800deg);
+    animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+  }
+  68% {
+    opacity: 1;
+    transform: rotate(870deg);
+    animation-timing-function: ease-in;
+  }
+  69% {
+    opacity: 0;
+    transform: rotate(880deg);
+  }
+}</style>
+    <i>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </i>
+</div>`;
+    var add = document.createElement('div');
+    add.innerHTML = adder;
+    document.body.appendChild(add);
+}
+
+var DeleteLoadingPageLevel= function() {
+  document.querySelector('div[class="loading"]').remove();
+}
+
+var checkm=function() {
+  var userAgentInfo=navigator.userAgent;
+        var Agents =new Array("Android","iPhone","SymbianOS","Windows Phone","iPad","iPod");
+        var flag=true;
+        for(var v=0;v<Agents.length;v++) {
+           if(userAgentInfo.indexOf(Agents[v])>0) {
+             flag=false;
+             break;
+           }
+         }
+         if(flag == false) {
+            window.location.pathname = "/AndroidNotch.html";
+         } else {
+           DeleteLoadingPageLevel();
+         }
+}
+var check=function() {
+        LoadingPageLevel();
+        setTimeout("DeleteLoadingPageLevel();", 1000 )
+}
+ 
+check();
+    </script>
+</body>
+</html>
