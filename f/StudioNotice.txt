@@ -1,0 +1,16 @@
+Flutas公告
+
+1.我们致力于分享代码,合作共赢,共同创作,共同进步;
+
+2.工作室内禁止任何刷屏行为,违者将被警告,3次机会 机会次数用尽直接踢出;
+
+3.工作室内每个人有自己的任务:
+ Xbodw负责网站更新与制作软件;
+ Zhujunjie负责制作软件与发行软件;
+ 不知道从哪出来的Win7负责调试与修改安装包;
+ ,每个人按照自己擅长的事情进行互帮互助,这样工作室才会更和谐;
+ 
+ 4.工作室官方网站: https://xbodw.github.io,
+ Zhujunjie官方网站: https://zhujunjie-official.github.io,
+ 不知道从哪出来的Win7官方网站: https://bzdcnldw7.mysxl.cn;
+ 
