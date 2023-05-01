@@ -125,6 +125,8 @@ nav.c-uhff-nav {
     margin: 0 auto;
     max-width: calc(1600px + 10%);
     padding: 0 5%;
+    bottom: 0px;
+    position: fixed;
 }
 
 a.c-uhff-link {
