@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://xbodw.github.io\Resources\Feature.css">
+    <link rel="stylesheet" href="https://xbodw.github.io/Resources/code/styles/vs.min.css">
     <link href="https://xbodw.github.io\Resources\Flutas.ico" rel="icon">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
     <meta name="xbodw.github.io" content="Flutas">
     <title>ChatGPT被Flutas做成了软件?!|Flutas</title>
 </head>
@@ -25,7 +27,7 @@
     </div>
     <div class="docmain">
 	                <br>
-			<strong>ChatGPT with Flutas</strong>
+			<h2>Flutas开发命令行下载器？</h2>
 			<br>
       <span>我们用<a href="https://www.electronjs.org/zh">CsHarp</a>(C#,基于.NET)框架编写了Fluget文件下载器</span>
 			<br>
@@ -40,17 +42,23 @@
                     <pre>
                     <code>
                     fluget "http或者https链接"
-                    //示例
+                    </code>
+                    </pre>
+                                <br<br>
+                                <span>比如:
+                                <br>
+                     <pre>
+                    <code>
                     fluget "https://official-package.wpscdn.cn/wps/download/WPS_Setup_14309.exe"
                     //上面的示例用于下载wps
                     </code>
                     </pre>
+				<br>
+				<span>随后如果链接合法有效,并且在2秒内响应,就会开始发送请求下载文件</span>
 			<br><br>
-                    <img src="pss.png"><a href="https://openai.com/blog/chatgpt"></a></img>
-			<br><br>
-                    <span>不仅如此,在您的电脑没有清理浏览缓存的情况下,聊天记录可以一直保存</span>
+                    <span>不仅如此,他还会显示文件下载了百分之多少</span>
                     <br>
-                    <p class="info">注意! 该模型为ChatGPT 3.5,所以初始版本号为3.5,不代表之后也还是3.5!</p>
+                    <p class="info">由于基于<a href="https://learn.microsoft.com/zh-cn/dotnet/csharp/tour-of-csharp/"C#</a>(Csharp)编写的命令行下载器,在实际使用中不能像游戏软件那样双击打开,需要借助<strong>命令提示符</strong></p>
 			<br>
 			<br>
     </div>
@@ -441,5 +449,9 @@ var check=function() {
  
 check();
     </script>
+                                <script>
+                                        hljs.initHighlightingOnLoad();
+	    hljs.initLineNumbersOnLoad();
+                                        </script>
 </body>
 </html>
