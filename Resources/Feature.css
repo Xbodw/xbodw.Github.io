@@ -77,17 +77,19 @@ h1 {
 }
 
 p.info {
-    padding: .5rem 1rem;
+    font-size: 85%;
+    white-space: break-spaces;
     background-color: #f2f2f2;
-    border: 1px solid #1890ff;
-    border-radius: .4rem;
+    border-radius: 6px;
+    width: max-content;
 }
 
 p.into {
-    padding: .5rem 1rem;
+    font-size: 85%;
+    white-space: break-spaces;
     background-color: #f2f2f2;
-    border: 1px solid #1890ff;
-    border-radius: .4rem;
+    border-radius: 7px;
+    width: max-content;
 }
 
 footer {
