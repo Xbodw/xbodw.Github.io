@@ -75,7 +75,7 @@ $(document).ready(function() {
     let escapedMessage = escapeHtml(message);  // 瀵硅姹俶essage杩涜杞箟锛岄槻姝㈣緭鍏ョ殑鏄痟tml鑰岃娴忚鍣ㄦ覆鏌 
     let requestMessageElement = $('<br><br><div class="row message-bubble"><div class="message-text request">' +  escapedMessage + '</div></div>');
     chatWindow.append(requestMessageElement);
-    let responseMessageElement = $('<br><br><div class="row message-bubble"><div class="message-text response"><span class="reposing">ChatGPT正在解析...</span></div></div><br>');
+    let responseMessageElement = $('<br><br><div class="row message-bubble"><div class="message-text response"><p class="reposing">ChatGPT正在解析...</p></div></div><br>');
     chatWindow.append(responseMessageElement);
     chatWindow.animate({ scrollTop: chatWindow.prop('scrollHeight') }, 500);
   }
