@@ -166,7 +166,7 @@ $(document).ready(function() {
     
     // 淇濆瓨api key涓庡璇濇暟鎹 
     let data = {
-      "apiKey" : "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",
+      "apiKey" : "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",
     }
    
     // 鍒ゆ柇鏄惁浣跨敤鑷繁鐨刟pi key
