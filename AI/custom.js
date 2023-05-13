@@ -162,7 +162,7 @@ $(document).ready(function() {
     
     // 淇濆瓨api key涓庡璇濇暟鎹 
     let data = {
-      "apiKey" : "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", // 杩欓噷濉啓鍥哄畾 apiKey
+      "apiKey" : "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",
     }
    
     // 鍒ゆ柇鏄惁浣跨敤鑷繁鐨刟pi key
