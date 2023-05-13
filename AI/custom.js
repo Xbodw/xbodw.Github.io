@@ -220,6 +220,7 @@ $(document).ready(function() {
 
   function handleEnter(e){
     if (e.keyCode==13){
+      document.querySelector('.tip').setAttribute('style',"display:none");
       chatBtn.click();
       e.preventDefault();  //閬垮厤鍥炶溅鎹㈣
     }
