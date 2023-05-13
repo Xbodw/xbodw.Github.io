@@ -122,7 +122,7 @@ $(document).ready(function() {
       },
       body: JSON.stringify({
         "messages": data.prompt,
-        "model": "gpt-3.5-turbo",
+        "model": "gpt-3.0",
         "max_tokens": 2048,
         "temperature": 0.5,
         "top_p": 1,
