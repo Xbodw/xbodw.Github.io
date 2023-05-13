@@ -114,7 +114,7 @@ $(document).ready(function() {
   //澶囩敤缃戝潃https://openai.1rmb.tk/v1/chat/completions銆乭ttps://api.openai.com/v1/chat
   async function sendRequest(data) {
     //V1 string add chat/ to Use Model 3.5
-    const response = await fetch('https://openai.1rmb.tk/v1/chat/completions', {
+    const response = await fetch('https://openai.1rmb.tk/v1/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -150,7 +150,7 @@ $(document).ready(function() {
           resFlag = true;
         }else{
           if(jsonObj.error){
-            addFailMessage('<p class="error">' + jsonObj.error.type + " : " + jsonObj.error.message + '</p>');
+            addFailMessage('<p class="ChatGPTError">抱歉,ChatGPT遇到错误,请稍后重试.</p>');
             resFlag = false;
           }
         } 
@@ -166,16 +166,15 @@ $(document).ready(function() {
     
     // 淇濆瓨api key涓庡璇濇暟鎹 
     let data = {
-      "apiKey" : "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",
+      "apiKey" : "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",
     }
    
     // 鍒ゆ柇鏄惁浣跨敤鑷繁鐨刟pi key
     if ($(".key .ipt-1").prop("checked")){
       var apiKey = $(".key .ipt-2").val();
       if (apiKey.length < 20 ){
-          common_ops.alert("璇疯緭鍏ユ纭殑 api key 锛 ",function(){
+          common_ops.alert("请输入正确的 api key ！",function(){
             chatInput.val('');
-            // 閲嶆柊缁戝畾閿洏浜嬩欢
             chatInput.on("keydown",handleEnter);
           })
           return
@@ -187,7 +186,7 @@ $(document).ready(function() {
 
     let message = chatInput.val();
     if (message.length == 0){
-      common_ops.alert("璇疯緭鍏ュ唴瀹癸紒",function(){
+      common_ops.alert("请输入内容",function(){
         chatInput.val('');
         // 閲嶆柊缁戝畾閿洏浜嬩欢
         chatInput.on("keydown",handleEnter);
@@ -196,9 +195,7 @@ $(document).ready(function() {
     }
 
     addRequestMessage(message);
-    // 灏嗙敤鎴锋秷鎭繚瀛樺埌鏁扮粍
     messages.push({"role": "user", "content": message})
-    // 鏀跺埌鍥炲鍓嶈鎸夐挳涓嶅彲鐐瑰嚮
     chatBtn.attr('disabled',true)
 
     data.prompt = messages;
@@ -221,7 +218,6 @@ $(document).ready(function() {
 
   });  
 
-  // Enter閿洏浜嬩欢
   function handleEnter(e){
     if (e.keyCode==13){
       chatBtn.click();
@@ -229,18 +225,7 @@ $(document).ready(function() {
     }
   }
 
-  // 缁戝畾Enter閿洏浜嬩欢
   chatInput.on("keydown",handleEnter);
-  
-  // // 绂佺敤鍙抽敭鑿滃崟
-  // document.addEventListener('contextmenu',function(e){
-  //   e.preventDefault();  // 闃绘榛樿浜嬩欢
-  // });
-
-  // // 绂佹閿洏F12閿 
-  // document.addEventListener('keydown',function(e){
-  //   if(e.key == 'F12'){
-  //       e.preventDefault(); // 濡傛灉鎸変笅閿瓼12,闃绘浜嬩欢
-  //   }
-  // });
+  //document.addEventListener('contextmenu',function(e){e.preventDefault();});
+document.addEventListener('keydown',function(e){if(e.key == 'F12'){e.preventDefault();}});
 });
