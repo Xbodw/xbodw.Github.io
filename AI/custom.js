@@ -1,4 +1,4 @@
-// 灏佽寮圭獥layer缁勪欢绛 
+// 封装弹窗layer组件等
 var common_ops = {
   alert:function( msg ,cb ){
       layer.alert( msg,{
@@ -13,15 +13,15 @@ var common_ops = {
   confirm:function( msg,callback ){
       callback = ( callback != undefined )?callback: { 'ok':null, 'cancel':null };
       layer.confirm( msg , {
-          btn: ['确定','取消']
+          btn: ['确定','取消'] //按钮
       }, function( index ){
-          //纭畾浜嬩欢
+          //确定事件
           if( typeof callback.ok == "function" ){
               callback.ok();
           }
           layer.close( index );
       }, function( index ){
-          //鍙栨秷浜嬩欢
+          //取消事件
           if( typeof callback.cancel == "function" ){
               callback.cancel();
           }
@@ -39,22 +39,22 @@ var common_ops = {
 };
 
 
-// 鍔熻兘
+// 功能
 $(document).ready(function() {
   var chatBtn = $('#chatBtn');
   var chatInput = $('#chatInput');
   var chatWindow = $('#chatWindow');
 
-  // 瀛樺偍瀵硅瘽淇℃伅,瀹炵幇杩炵画瀵硅瘽
+  // 存储对话信息,实现连续对话
   var messages = [];
 
-  // 妫€娴嬫槸鍚︽槸html浠ｇ爜鐨勬爣蹇楀彉閲 
+  // 检测是否是html代码的标志变量
   var checkHtmlFlag = false;
 
-  // 妫€鏌ヨ繑鍥炵殑淇℃伅鏄惁鏄纭俊鎭 
+  // 检查返回的信息是否是正确信息
   var resFlag = true
 
-  // 杞箟html浠ｇ爜(瀵瑰簲瀛楃杞Щ涓篽tml瀹炰綋)锛岄槻姝㈠湪娴忚鍣ㄦ覆鏌 
+  // 转义html代码(对应字符转移为html实体)，防止在浏览器渲染
   function escapeHtml(html) {
     let text = document.createTextNode(html);
     let div = document.createElement('div');
@@ -62,17 +62,17 @@ $(document).ready(function() {
     return div.innerHTML;
   }
 
-  // 鍒ゆ柇杈撳嚭鍐呭鏄惁鍖呭惈html鏍囩
+  // 判断输出内容是否包含html标签
   function checkHtmlTag(str) {
-    let pattern = /<\s*\/?\s*[a-z]+(?:\s+[a-z]+=(?:"[^"]*"|'[^']*'))*\s*\/?\s*>/i;  // 鍖归厤HTML鏍囩鐨勬鍒欒〃杈惧紡
-    return pattern.test(str); // 杩斿洖鍖归厤缁撴灉
+    let pattern = /<\s*\/?\s*[a-z]+(?:\s+[a-z]+=(?:"[^"]*"|'[^']*'))*\s*\/?\s*>/i;  // 匹配HTML标签的正则表达式
+    return pattern.test(str); // 返回匹配结果
   }
   
-  // 娣诲姞璇锋眰娑堟伅鍒扮獥鍙 
+  // 添加请求消息到窗口
   function addRequestMessage(message) {
-    $(".answer .tips").css({"display":"none"});    // 鎵撹祻鍗￠殣钘 
+    $(".answer .tips").css({"display":"none"});    // 打赏卡隐藏
     chatInput.val('');
-    let escapedMessage = escapeHtml(message);  // 瀵硅姹俶essage杩涜杞箟锛岄槻姝㈣緭鍏ョ殑鏄痟tml鑰岃娴忚鍣ㄦ覆鏌 
+    let escapedMessage = escapeHtml(message);  // 对请求message进行转义，防止输入的是html而被浏览器渲染
     let requestMessageElement = $('<br><br><div class="row message-bubble"><div class="message-text request">' +  escapedMessage + '</div></div>');
     chatWindow.append(requestMessageElement);
     let responseMessageElement = $('<br><br><div class="row message-bubble"><div class="message-text response"><p>ChatGPT正在解析...</p></div></div><br>');
@@ -81,16 +81,16 @@ $(document).ready(function() {
     chatWindow.animate({ scrollTop: chatWindow.prop('scrollHeight') }, 500);
   }
   
-  // 娣诲姞鍝嶅簲娑堟伅鍒扮獥鍙 ,娴佸紡鍝嶅簲姝ゆ柟娉曚細鎵ц澶氭
+  // 添加响应消息到窗口,流式响应此方法会执行多次
   function addResponseMessage(message) {
     let lastResponseElement = $(".message-bubble .response").last();
     lastResponseElement.empty();
     let escapedMessage;
-    if(checkHtmlTag(message)){  // 濡傛灉鏄痟tml浠ｇ爜
+    if(checkHtmlTag(message)){  // 如果是html代码
       escapedMessage = marked(escapeHtml(message)); 
       checkHtmlFlag = true;
     }else{
-      escapedMessage = marked(message);  // 鍝嶅簲娑堟伅markdown瀹炴椂杞崲涓篽tml
+      escapedMessage = marked(message);  // 响应消息markdown实时转换为html
       checkHtmlFlag = false;
     }
     lastResponseElement.append(escapedMessage);
@@ -99,22 +99,21 @@ $(document).ready(function() {
     window.scrollTo(0, document.documentElement.scrollHeight);
   }
 
-  // 娣诲姞澶辫触淇℃伅鍒扮獥鍙 
+  // 添加失败信息到窗口
   function addFailMessage(message) {
     let lastResponseElement = $(".message-bubble .response").last();
     lastResponseElement.empty();
     lastResponseElement.append(message);
     chatWindow.scrollTop(chatWindow.prop('scrollHeight'));
     window.scrollTo(0, document.documentElement.scrollHeight);
-    messages.pop() // 澶辫触灏辫鐢ㄦ埛杈撳叆淇℃伅浠庢暟缁勫垹闄 
+    messages.pop() // 失败就让用户输入信息从数组删除
   }
   
 
-  // 鍙戦€佽姹傝幏寰楀搷搴 
-  //澶囩敤缃戝潃https://openai.1rmb.tk/v1/chat/completions銆乭ttps://api.openai.com/v1/chat
+  // 发送请求获得响应
+  //备用网址https://openai.1rmb.tk/v1/chat/completions、https://api.openai.com/v1/chat、https://open.aiproxy.xyz/v1/chat/completions
   async function sendRequest(data) {
-    //V1 string add chat/ to Use Model 3.5
-    const response = await fetch('https://openai.1rmb.tk/v1/chat/completions', {
+    const response = await fetch('https://open.aiproxy.xyz/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -150,7 +149,7 @@ $(document).ready(function() {
           resFlag = true;
         }else{
           if(jsonObj.error){
-            addFailMessage('<p class="ChatGPTError">抱歉,ChatGPT遇到错误,请稍后重试.</p>');
+            addFailMessage('<p class="error">抱歉,ChatGPT遇到错误. ' + jsonObj.error.type + " : " + jsonObj.error.message + '</p>');
             resFlag = false;
           }
         } 
@@ -159,22 +158,23 @@ $(document).ready(function() {
     return str;
   }
 
-  // 澶勭悊鐢ㄦ埛杈撳叆
+  // 处理用户输入
   chatBtn.click(function() {
-    // 瑙ｇ粦閿洏浜嬩欢
+    // 解绑键盘事件
     chatInput.off("keydown",handleEnter);
     
-    // 淇濆瓨api key涓庡璇濇暟鎹 
+    // 保存api key与对话数据
     let data = {
-      "apiKey" : "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",
+      "apiKey" : "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", // 这里填写固定 apiKey
     }
    
-    // 鍒ゆ柇鏄惁浣跨敤鑷繁鐨刟pi key
+    // 判断是否使用自己的api key
     if ($(".key .ipt-1").prop("checked")){
       var apiKey = $(".key .ipt-2").val();
       if (apiKey.length < 20 ){
           common_ops.alert("请输入正确的 api key ！",function(){
             chatInput.val('');
+            // 重新绑定键盘事件
             chatInput.on("keydown",handleEnter);
           })
           return
@@ -186,16 +186,18 @@ $(document).ready(function() {
 
     let message = chatInput.val();
     if (message.length == 0){
-      common_ops.alert("请输入内容",function(){
+      common_ops.alert("请输入内容！",function(){
         chatInput.val('');
-        // 閲嶆柊缁戝畾閿洏浜嬩欢
+        // 重新绑定键盘事件
         chatInput.on("keydown",handleEnter);
       })
       return
     }
 
     addRequestMessage(message);
+    // 将用户消息保存到数组
     messages.push({"role": "user", "content": message})
+    // 收到回复前让按钮不可点击
     chatBtn.attr('disabled',true)
 
     data.prompt = messages;
@@ -204,9 +206,9 @@ $(document).ready(function() {
       if(resFlag){
         messages.push({"role": "assistant", "content": res});
       }
-      // 鏀跺埌鍥炲锛岃鎸夐挳鍙偣鍑 
+      // 收到回复，让按钮可点击
       chatBtn.attr('disabled',false)
-      // 閲嶆柊缁戝畾閿洏浜嬩欢
+      // 重新绑定键盘事件
       chatInput.on("keydown",handleEnter); 
       if (checkHtmlFlag) {
         let lastResponseElement = $(".message-bubble .response").last();
@@ -218,15 +220,27 @@ $(document).ready(function() {
 
   });  
 
+  // Enter键盘事件
   function handleEnter(e){
     if (e.keyCode==13){
       document.querySelector('.tip').setAttribute('style',"display:none");
       chatBtn.click();
-      e.preventDefault();  //閬垮厤鍥炶溅鎹㈣
+      e.preventDefault();  //避免回车换行
     }
   }
 
+  // 绑定Enter键盘事件
   chatInput.on("keydown",handleEnter);
-  //document.addEventListener('contextmenu',function(e){e.preventDefault();});
-document.addEventListener('keydown',function(e){if(e.key == 'F12'){e.preventDefault();}});
+  
+  // // 禁用右键菜单
+  // document.addEventListener('contextmenu',function(e){
+  //   e.preventDefault();  // 阻止默认事件
+  // });
+
+  // // 禁止键盘F12键
+  // document.addEventListener('keydown',function(e){
+  //   if(e.key == 'F12'){
+  //       e.preventDefault(); // 如果按下键F12,阻止事件
+  //   }
+  // });
 });
