@@ -110,7 +110,8 @@ $(document).ready(function() {
   // 鍙戦€佽姹傝幏寰楀搷搴 
   //澶囩敤缃戝潃https://openai.1rmb.tk/v1/chat/completions銆乭ttps://api.openai.com/v1/chat
   async function sendRequest(data) {
-    const response = await fetch('https://open.aiproxy.xyz/v1/chat/completions', {
+    //V1 string add chat/ to Use Model 3.5
+    const response = await fetch('https://open.aiproxy.xyz/v1/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
