@@ -77,6 +77,7 @@ $(document).ready(function() {
     chatWindow.append(requestMessageElement);
     let responseMessageElement = $('<br><br><div class="row message-bubble"><div class="message-text response"><p>ChatGPT正在解析...</p></div></div><br>');
     chatWindow.append(responseMessageElement);
+    window.scrollTo(0, document.documentElement.scrollHeight);
     chatWindow.animate({ scrollTop: chatWindow.prop('scrollHeight') }, 500);
   }
   
@@ -95,6 +96,7 @@ $(document).ready(function() {
     lastResponseElement.append(escapedMessage);
     chatWindow.scrollTop(chatWindow.prop('scrollHeight'));
     hljs.initHighlightingOnLoad();
+    window.scrollTo(0, document.documentElement.scrollHeight);
   }
 
   // 娣诲姞澶辫触淇℃伅鍒扮獥鍙 
@@ -103,6 +105,7 @@ $(document).ready(function() {
     lastResponseElement.empty();
     lastResponseElement.append(message);
     chatWindow.scrollTop(chatWindow.prop('scrollHeight'));
+    window.scrollTo(0, document.documentElement.scrollHeight);
     messages.pop() // 澶辫触灏辫鐢ㄦ埛杈撳叆淇℃伅浠庢暟缁勫垹闄 
   }
   
@@ -111,7 +114,7 @@ $(document).ready(function() {
   //澶囩敤缃戝潃https://openai.1rmb.tk/v1/chat/completions銆乭ttps://api.openai.com/v1/chat
   async function sendRequest(data) {
     //V1 string add chat/ to Use Model 3.5
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch('https://openai.1rmb.tk/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
