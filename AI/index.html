@@ -24,7 +24,7 @@
         </ul>
     </div>
   <div class="container">
-	  <div class="top"><h1>Flutas ChatGPT AI</h1><br><br><span>ChatGPT是一个聊天机器人,点击下面的文本框输入消息以开始</span></div>
+	  <div class="tip "><h1>Flutas ChatGPT AI</h1><br><br><span>ChatGPT是一个聊天机器人,点击下面的文本框输入消息以开始</span></div>
     <div class="row">
       <div class="col-xs-12">
         </div>
@@ -50,7 +50,10 @@
 </body>
 <script>
 var chatInput = document.getElementById('chatInput');
-
+var chatBtn = document.getElementById('chatBtn');
+	chatBtn.addEventListener('click', function() {
+		document.querySelector('.tip').setAttribute('class','tip __web-inspector-hide-shortcut__');
+	});
 chatInput.addEventListener('input', function() {
   var inputText = chatInput.value;
 });
