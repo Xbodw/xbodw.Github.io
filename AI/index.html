@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+	<meta name="google" content="notranslate">
+	<meta name="Edge" content="notranslate">
+	<meta name="Firfox" content="notranslate">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="images/x-icon" href="https://xbodw.github.io/Resources/Flutas.ico">
+    <link rel="stylesheet" href="https://xbodw.github.io/Resources/Feature.css">
+    <link rel="stylesheet" href="https://xbodw.github.io/Resources/code/styles/github.min.css">
+    <link rel="stylesheet" href="ChatGPTMain.css">
+    <title>Flutas ChatGPT AI</title>
+</head>
+<body>
+<div class="bk">
+        <h2>Flutas ChatGPT AI</h2>
+        <ul class="ul_top">
+             <li><a href="/">首页</a></li>
+            <li><a style="text-decoration: underline;" href="/Download">产品</a></li>
+            <li><a href="/Docs">文档</a></li>
+            <li><a href="/feedback">帮助</a></li>
+        </ul>
+    </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        </div>
+        <div class="answer">
+            <hr/>
+            <br>
+            <br>
+          <div id="chatWindow"></div>
+            <div class="col-xs-12">
+              <input id="chatInput" class="form-control" rows="1"></textarea>
+              <span class="input-group-btn">
+              <button id="chatBtn" class="btn btn-primary" type="button">发送</button>
+        </span>
+    </div>
+
+   <style>
+</style>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+var chatInput = document.getElementById('chatInput');
+
+chatInput.addEventListener('input', function() {
+  var inputText = chatInput.value;
+});
+</script>
+<script src="jquery-2.1.1.js"></script>
+<script src="marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+<script src="custom.js"></script>
+</html>

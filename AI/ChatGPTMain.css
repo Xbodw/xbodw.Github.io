@@ -1,0 +1,52 @@
+.message-text.response {
+    text-align: left;
+}
+
+.row.message-bubble {}
+
+.message-text.request {
+    text-align: right;
+}
+
+.col-xs-12 {
+    bottom: 0px;
+    position: fixed;
+}
+
+input.form-control {
+ width: 1200px;
+    height: 20px;
+    font-size: 14px;
+    border-color: #ccc;
+    resize: none;
+    font-family: "Microsoft YaHei UI Light";
+}
+
+img.chatGPT {
+    width: 24px;
+}
+
+div#chatWindow {
+    width: 800px;
+    margin: 0 auto;
+}
+
+p {
+    padding: .1rem 1rem;
+    background-color: #f2f2f2;
+    border: 1px solid #f2f2f2;
+    border-radius: .4rem;
+    max-width: 800px;
+    width: max-content;
+}
+
+.message-text.request {
+  position: absolute;
+    right: 289px;
+    padding: .1rem 1rem;
+    background-color: #f2f2f2;
+    border: 1px solid #f2f2f2;
+    border-radius: .4rem;
+    max-width: 800px;
+    width: max-content;
+}
