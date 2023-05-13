@@ -111,7 +111,7 @@ $(document).ready(function() {
   //澶囩敤缃戝潃https://openai.1rmb.tk/v1/chat/completions銆乭ttps://api.openai.com/v1/chat
   async function sendRequest(data) {
     //V1 string add chat/ to Use Model 3.5
-    const response = await fetch('https://open.aiproxy.xyz/v1/completions', {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
