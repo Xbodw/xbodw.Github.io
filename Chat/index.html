@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+	<meta name="google" content="notranslate">
+	<meta name="Edge" content="notranslate">
+	<meta name="Firfox" content="notranslate">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="images/x-icon" href="https://xbodw.github.io/Resources/Flutas.ico">
+    <link rel="stylesheet" href="https://xbodw.github.io/Resources/Feature.css">
+    <link rel="stylesheet" href="https://xbodw.github.io/Resources/code/styles/github.min.css">
+    <link rel="stylesheet" href="ChatGPTMain.css">
+    <title>Flutas ChatGPT AI</title>
+</head>
+<body>
+<div class="bk">
+        <h2>Flutas ChatGPT AI</h2>
+        <ul class="ul_top">
+             <li><a href="/">首页</a></li>
+            <li><a style="text-decoration: underline;" href="/Download">产品</a></li>
+            <li><a href="/Docs">文档</a></li>
+            <li><a href="/feedback">帮助</a></li>
+        </ul>
+    </div>
+  <div class="container">
+<div class="tip"><h1>Flutas ChatGPT AI</h1><br><br><span>Flutas ChatGPT AI是一个基于ChatGPT Api接口优化制作的人工智能聊天工具,它可以帮助您完成以下功能:<br>1.聊天<br>2.解答问题<br>3.写代码<br>......<br><br><br>要开始聊天,请在下方的文本框中输入内容,并按下发送</span></div>
+    <div class="row">
+      <div class="col-xs-12">
+        </div>
+        <div class="answer">
+            <br>
+            <br>
+            <br>
+          <div id="chatWindow"></div>
+            <div class="col-xs-12">
+              <input id="chatInput" class="form-control" rows="1" placeholder="  输入你想问的问题..."></input>
+              <span class="input-group-btn">
+<button class="n-button n-button--primary-type n-button--medium-type n-button--disabled" id="chatBtn" class="btn btn-primary" tabindex="-1" type="button" style="background-color: #18a058; --n-bezier: cubic-bezier(.4, 0, .2, 1); --n-bezier-ease-out: cubic-bezier(0, 0, .2, 1); --n-ripple-duration: .6s; --n-opacity-disabled: 0.5; --n-wave-opacity: 0.6; font-weight: 400; --n-color: #18a058; --n-color-hover: #36ad6a; --n-color-pressed: #0c7a43; --n-color-focus: #36ad6a; --n-color-disabled: #18a058; --n-ripple-color: #18a058; --n-text-color: #FFF; --n-text-color-hover: #FFF; --n-text-color-pressed: #FFF; --n-text-color-focus: #FFF; --n-text-color-disabled: #FFF; --n-border: 1px solid #18a058; --n-border-hover: 1px solid #36ad6a; --n-border-pressed: 1px solid #0c7a43; --n-border-focus: 1px solid #36ad6a; --n-border-disabled: 1px solid #18a058; --n-width: initial; --n-height: 34px; --n-font-size: 14px; --n-padding: 0 14px; --n-icon-size: 18px; --n-icon-margin: 6px; --n-border-radius: 3px;" disabled=""><!----><span class="n-button__icon" style="margin: 0px;"><div class="n-icon-slot" role="none"><span class="dark:text-black"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class=" iconify iconify--ri" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M1.946 9.316c-.522-.175-.526-.456.011-.635L21.043 2.32c.529-.176.832.12.684.638l-5.453 19.086c-.151.529-.456.547-.68.045L12 14l6-8l-8 6l-8.054-2.684Z"></path></svg></span></div></span><!----><div aria-hidden="true" class="n-base-wave"></div><div aria-hidden="true" class="n-button__border"></div><div aria-hidden="true" class="n-button__state-border"></div></button>
+        </span>
+    </div>
+
+   <style>
+</style>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+var chatInput = document.getElementById('chatInput');
+
+chatInput.addEventListener('input', function() {
+  var inputText = chatInput.value;
+});
+</script>
+<script src="jquery-2.1.1.js"></script>
+<script src="marked.min.js"></script>
+<script src="highlight.min.js"></script>
+<script src="Chat.js"></script>
+</html>
