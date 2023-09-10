@@ -10,13 +10,21 @@
   <!-- 引用 -->
   <script src="https://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../Resources/Feature.css">
+  <link id="themeStylesheet" rel="stylesheet" href="../Resources/Feature.css">
+  <!-- <link rel="stylesheet" href="../Resources/Feature_DARK.css"> -->
+  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+  <!-- <script src="../Resources/theme-toggle.js"></script> -->
+  <script>
+    function addDarkmodeWidget() {
+      new Darkmode().showWidget();
+    }
+    window.addEventListener('load', addDarkmodeWidget);
+  </script>
   <!-- 每日一言 -->
   <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
   <link href="../Resources/Flutas.ico" rel="icon">
   <meta name="xbodw.github.io" content="Flutas">
   <title>Flutas | 官网</title>
-  
 </head>
 <!-- HEAD END -->
 
@@ -63,9 +71,84 @@
     <br>
     <span>我们的工作室目前已有<a>7</a>名成员</span>
     <br><br>
+    <div>
+      <style type="text/css">
+			.black_overlay {
+				display: none;
+				/* 此元素不会被显示*/
+				position: absolute;
+				top: 0%;
+				left: 0%;
+				width: 100%; 
+				height: 100%;
+				background-color: #bbbbbb;
+				z-index: 1001;
+				/* z-index 属性设置元素的堆叠顺序。*/
+				opacity: .80;
+				/* opacity 属性设置元素的不透明级别。*/
+			}
+
+			.white_content {
+				display: none;
+				position: absolute;
+				top: 20%;
+				border: 1px solid #bbbbbb;
+				border-radius: 20px;
+				background-color: white;
+				z-index: 1002;
+				/*层级要比.black_overlay高，这样才能显示在它前面*/
+				overflow: auto;
+			}
+
+			#light {
+				position: absolute;
+				left: 50%;
+				/* top: 50%; */
+				width: 300px;
+				height: 200px;
+				margin-left: -150px;
+				/* margin-top: -125px */;
+			}
+
+			#form_submit {
+				text-align: center;
+				margin-left: 10px;
+				margin-top: 10px;
+			}
+
+			#font_login {
+				font-weight: 400;
+				font-size: 24px;
+				color: #BBBBBB;
+				text-align: center;
+				margin-top: 20px;
+			}
+
+			.button_beautiful {
+				width: 60px;
+				height: 34px;
+				/* 高度 */
+				border-width: 0px;
+				border-radius: 6px;
+				background: #4ECDC4;
+				cursor: pointer;
+				outline: none;
+				color: white;
+				font-size: 16px;
+				margin-top: 20px;
+			}
+		</style>
     <blockquote>如果你有意愿<p>向<a href="https://www.douyin.com/user/MS4wLjABAAAAR268uU6l5jHiwUb8Igr7UGqRV4V_GyHY_IajlltMt-I" target="_blank">@Xbodw</a>审核电脑技术能力后即可加入</p></blockquote>    <br>
-    <div id="par">
-      <button type="submit" id="Addon-Home">想要加入</button>
+    <button class="button_beautiful" type="button" href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">加入</button>
+		<div id="light" class="white_content">
+			<div id="font_login">提示</div>
+			<form action="" method="post" id="form_submit">
+        <p>请联系xbodwxbodw@outlook.com</p>
+				<input type="button" value="确认" class="button_beautiful" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'" />
+				<input type="button" value="取消" class="button_beautiful" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'" />
+			</form>
+		</div>
+		<div id="fade" class="black_overlay"></div>
     </div>
     <br>
     <span>你可以与我们共享成果与技术、代码</span>
@@ -143,14 +226,6 @@
 </body>
 
 <!-- JS BEGIN -->
-<script>
-  document.onreadystatechange = function () {
-    if (document.readyState == "complete") {    
-        $(".loading-div").hide();
-        $('body').css('overflow','scroll');
-    }
-  }
-</script>
 <style>
   body {
     width: 100%;
@@ -171,22 +246,31 @@
     display: inline-block;
     vertical-align: middle;
   } 
+  
 </style>
+<script>
+  document.onreadystatechange = function () {
+    if (document.readyState == "complete") {    
+        $(".loading-div").hide();
+        $('body').css('overflow','scroll');
+    }
+  }
+</script>
 <script>
 //   "use script";
 //   //This script by Xbodw.
 //   //此脚本由Xbodw编写, 请勿盗用!
 //   /*怎么会呢qwq,这是打表吧----DKX*/
 //  这个js会有时会卡在那个界面, 我改为了上面那个qwq---DKX
-//   var TapPage = function (Page) {
-//     window.location.pathname = path;
-//   }
+  // var TapPage = function (Page) {
+  //   window.location.pathname = path;
+  // }
 
-//   var AddElement = function (ElementName, GetElement) {
-//     var result = document.createElement(ElementName);
-//     GetElement.appendChild(result);
-//     return result;
-//   }
+  // var AddElement = function (ElementName, GetElement) {
+  //   var result = document.createElement(ElementName);
+  //   GetElement.appendChild(result);
+  //   return result;
+  // }
 
 //   var LoadingPageLevel = function () {
 //     var adder = `<div class="loading">
@@ -501,7 +585,7 @@
 
 //   var DeleteLoadingPageLevel = function () {
 //     document.querySelector('div[class="loading"]').remove();
-//   }
+  // }
 
 </script>
 <!-- JS END -->
@@ -528,21 +612,6 @@
       DeleteLoadingPageLevel();
     }
   }
-  var check = function () {
-    LoadingPageLevel();
-    document.querySelector('#Addon-Home').addEventListener('click', function () {
-      document.querySelector('#Addon-Home').remove();
-      var s = document.createElement('p');
-      s.innerHTML = `如果你想要加入, 请看到右下角的<code>"联系Flutas"</code>, 和<a>@Xbodw</a>取得联系`;
-      s.setAttribute('class', 'info');
-      document.querySelector('#par').appendChild(s);
-      window.location.href =
-        "mailto:xbodwxbodw@outlook.com?subjcet=Flutas%20工作室申请&bdoy=我是xxx\n我想加入Flutas工作室\n我......";
-    })
-    setTimeout("DeleteLoadingPageLevel();", 1000)
-  }
-
-  check();
 </script>
 
 <!-- 回到顶部开始 -->
@@ -578,7 +647,7 @@
   .medusa {
     position: fixed;
     right: 1%;
-    bottom: 5%;
+    bottom: 15%;
     width: 50px;
     border: 1px solid #cdcccc;
     background-color: white;
