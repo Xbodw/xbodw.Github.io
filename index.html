@@ -16,7 +16,8 @@
   <!-- <script src="../Resources/theme-toggle.js"></script> -->
   <script>
     function addDarkmodeWidget() {
-      new Darkmode()。showWidget();
+       var dm = new Darkmode();
+	    dm.showWidget();
     }
     window.addEventListener('load', addDarkmodeWidget);
   </script>
@@ -171,7 +172,7 @@
     <a href="https://www.douyin.com/user/MS4wLjABAAAAkjow6hmAwbjlQGDovGYXZ_lPvt05VIUWtZjv2MPLRgY" target="_blank">@ 科技君 MK</a>
     <a href="https://www.douyin.com/user/MS4wLjABAAAASvWykXAuC_LusChAmoe66JYOj1dEExUOV56CJiMZhlM" target="_blank">@ ZhujunJie_Offical</a>
     <a href="https://github.com/saf-D" target="_blank">@ DKX ( saf-D ) </a>
-	    <a href="https://space.bilibili.com/1442601130" target="_blank">@Yyr1145</a>
+	    <a href="https://space.bilibili.com/1442601130" target="_blank">@Yyr1145</a><br><br><br>
     </br>
     </p>
     <br>
@@ -252,8 +253,8 @@
 <script>
   document.onreadystatechange = function () {
     if (document.readyState == "complete") {    
-        $(".loading-div").hide();
-        $('body').css('overflow','scroll');
+        $(".loading-div")。hide();
+        $('body')。css('overflow'，'scroll');
     }
   }
 </script>
