@@ -1,0 +1,676 @@
+<!-- 此网站版权为Flutas工作室所有, 侵权者虽远必诛!  -->
+<!-- 该页面的创作者: @Xbodw , @DKX -->
+
+<!DOCTYPE html>
+<html lang="zh-hans">
+
+<!-- HEAD START -->
+<head>
+  <meta charset="utf-8">
+  <!-- 引用 -->
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link id="themeStylesheet" rel="stylesheet" href="../Resources/Feature.css">
+  <!-- <link rel="stylesheet" href="../Resources/Feature_DARK.css"> -->
+  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+  <!-- <script src="../Resources/theme-toggle.js"></script> -->
+  <script>
+    function addDarkmodeWidget() {
+       var dm = new Darkmode();
+	    dm.showWidget();
+    }
+    window.addEventListener('load', addDarkmodeWidget);
+  </script>
+  <!-- 每日一言 -->
+  <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+  <link href="../Resources/Flutas.ico" rel="icon">
+  <meta name="xbodw.github.io" content="Flutas">
+  <title>Flutas | 官网</title>
+</head>
+<!-- HEAD END -->
+
+<!-- BODY START -->
+
+<!-- 加载 -->
+<body>
+  <div class="loading-div">
+    <i class="fa fa-spinner fa-pulse fa-3x fa-fw "></i>
+    <span class="sr-only">载入中...</span>
+</div>
+  <!-- 防止被头栏挡住 -->
+  <br><br><br><br><br>
+
+  <!-- 头栏开始 -->
+
+  <!-- 工作室名 -->
+  <div class="bk">
+    <a href="#" target="_self">
+      <h2 style="white-space: nowrap;">&nbsp;&nbsp;Flutas</h2>
+    </a>
+    <!-- 头栏右侧导航 -->
+    <ul class="ul_top">
+      <li><a style="text-decoration: underline;" href="#">首页</a></li>
+      <li><a href="../Download/" target="_blank">产品</a></li>
+      <li><a href="../Docs/" target="_blank">文档</a></li>
+      <li><a href="../feedback/" target="_blank">帮助</a></li>
+      <li><a href="../Games/" target="_blank">游戏</a></li>
+      <li><a href="../Download/ChatGPT.html" target="_blank">AI</a></li>
+    </ul>
+  </div>
+  <!-- 头栏结束 -->
+
+  <!-- 内容开始 -->
+  <div class="docmain">
+    <h1>每日一言</h1>
+    <br>
+    <p id="hitokoto"><a href="/" id="hitokoto_text">正在加载...</a></p>
+    <br>
+    <h1>Flutas简介</h1>
+    <span>Flutas是非常棒的一个工作室</span>
+    <br>
+    <span>我们都在这里更新软件、精简系统、捣鼓游戏等</span>
+    <br>
+    <span>我们的工作室目前已有<a href="javascript:alert('Flutas工作室已有8名成员.')">8</a>名成员</span>
+    <br><br>
+    <div>
+      <style type="text/css">
+			.black_overlay {
+				display: 无;
+				/* 此元素不会被显示*/
+				position: absolute;
+				top: 0%;
+				left: 0%;
+				width: 100%; 
+				height: 100%;
+				background-color: #bbbbbb;
+				z-index: 1001;
+				/* z-index 属性设置元素的堆叠顺序.*/
+				opacity: .80;
+				/* opacity 属性设置元素的不透明级别.*/
+			}
+
+			.white_content {
+				display: 无;
+				position: absolute;
+				top: 20%;
+				border: 1px solid #bbbbbb;
+				border-radius: 20px;
+				background-color: white;
+				z-index: 1002;
+				/*层级要比.black_overlay高，这样才能显示在它前面*/
+				overflow: auto;
+			}
+
+			#light {
+				position: absolute;
+				left: 50%;
+				/* top: 50%; */
+				width: 300px;
+				height: 200px;
+				margin-left: -150px;
+				/* margin-top: -125px */;
+			}
+
+			#form_submit {
+				text-align: center;
+				margin-left: 10px;
+				margin-top: 10px;
+			}
+
+			#font_login {
+				font-weight: 400;
+				font-size: 24px;
+				color: #BBBBBB;
+				text-align: center;
+				margin-top: 20px;
+			}
+
+			.button_beautiful {
+				width: 60px;
+				height: 34px;
+				/* 高度 */
+				border-width: 0px;
+				border-radius: 6px;
+				background: #4ECDC4;
+				cursor: pointer;
+				outline: 无;
+				color: white;
+				font-size: 16px;
+				margin-top: 20px;
+			}
+		</style>
+    <blockquote>如果你有意愿<p>向<a href="https://www.douyin.com/user/MS4wLjABAAAAR268uU6l5jHiwUb8Igr7UGqRV4V_GyHY_IajlltMt-I" target="_blank">@Xbodw</a>审核电脑技术能力后即可加入</p></blockquote>    <br>
+    <button class="button_beautiful" type="button" href="javascript:void(0)" onclick="document.getElementById('light')style.display='block';document.getElementById('fade').style.display='block'">加入</button>
+		<div id="light" class="white_content">
+			<div id="font_login">提示</div>
+			<form action="" method="post" id="form_submit">
+        <p>请联系xbodwxbodw@outlook.com</p>
+				<input type="button" value="确认" class="button_beautiful" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'" />
+				<input type="button" value="取消" class="button_beautiful" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'" />
+			</form>
+		</div>
+		<div id="fade" class="black_overlay"></div>
+    </div>
+    <br>
+    <span>你可以与我们共享成果与技术、代码</span>
+    <br><br><br><br>
+    <h1>我们的任务</h1>
+    <br>
+    <span>我们虽不是专业电脑维修人员, 但我们可以提供我们的技术为您服务</span><br>
+    <span>我们擅长制作病毒与修复病毒、编写程序等</span>
+    <br><br>
+    <img src="https://user-assets.sxlcdn.com/images/1066627/Fi-M-V-x1JsVD8Tn2r6lr3F5tkN-.png?imageMogr2/strip/auto-orient/thumbnail/1200x9000%3E/format/png" />
+    <br>
+    <span>如果你的电脑蓝屏了, 修复蓝屏是我们的专项, 具体咨询请联系<a href="mailto:xbodwxbodw@outlook.com" target="_blank">给Xbodw发邮件咨询</a></span>
+    <br><br><br>
+    <p class="info">
+    合作伙伴:
+    <a href="https://www.douyin.com/user/MS4wLjABAAAAzc5IDtQxiXNhYKW6VwAmTVKbtXdnPhA6Ap866nr-JCMNh_E4j55iHNSaHQw-QwkQ" target="_blank">@ 蓝屏钙(中立)</a>
+    <a href="">@ 一只win2008球</a><!--这个的链接好像错了 https://www.douyin.com/user/MS4wLjABAAAAxkZyaB0WpB44UNFQKpQt4DSnIDTg-aBw8BtuMaaPKtzIDE-RKnyNi6r_17eLqr3K -->
+    <a href="https://www.douyin.com/user/MS4wLjABAAAA06tY4fACNte3YAJ9hTRmbscZkswGfdLWGZaahwI2ZNM" target="_blank">@ 不知道从哪出来的Win7&nbsp;&nbsp;</a>
+    <a href="https://www.douyin.com/user/MS4wLjABAAAAhCam6cAHHca5ZaNRG-ejJrtkuAf52ZfB7Jz816WgqqE" target="_blank">@ 鹤子爱编程</a>
+    <a href="https://www.douyin.com/user/MS4wLjABAAAAkjow6hmAwbjlQGDovGYXZ_lPvt05VIUWtZjv2MPLRgY" target="_blank">@ 科技君 MK</a>
+    <a href="https://www.douyin.com/user/MS4wLjABAAAASvWykXAuC_LusChAmoe66JYOj1dEExUOV56CJiMZhlM" target="_blank">@ ZhujunJie_Offical</a>
+    <a href="https://github.com/saf-D" target="_blank">@ DKX ( saf-D ) </a>
+	    <a href="https://space.bilibili.com/1442601130" target="_blank">@Yyr1145</a><br><br><br>
+    </br>
+    </p>
+    <br>
+  </div>
+  <!-- 内容结束 -->
+
+  <!-- 页脚链接开始 -->
+  <nav class="c-uhff-nav" aria-label="页脚资源链接">
+    <!-- 将其放置右下角 -->
+    <div class="c-uhff-nav-row"><div class="c-uhff-nav-group"><div class="c-heading-4" role="heading" aria-level="0"></div></div><div class="c-uhff-nav-group"><div class="c-heading-4" role="heading" aria-level="0"></div></div><div class="c-uhff-nav-group"><div class="c-heading-4" role="heading" aria-level="0"></div></div><div class="c-uhff-nav-group"><div class="c-heading-4" role="heading" aria-level="0"></div></div><div class="c-uhff-nav-group"><div class="c-heading-4" role="heading" aria-level="0"></div></div><div class="c-uhff-nav-group"><div class="c-heading-4" role="heading" aria-level="0"></div></div><div class="c-uhff-nav-group"><div class="c-heading-4" role="heading" aria-level="0"></div></div><div class="c-uhff-nav-group"><div class="c-heading-4" role="heading" aria-level="0"></div></div><div class="c-uhff-nav-group"><div class="c-heading-4" role="heading" aria-level="0"></div></div><div class="c-uhff-nav-group"><div class="c-heading-4" role="heading" aria-level="0"></div></div><div class="c-uhff-nav-group"><div class="c-heading-4" role="heading" aria-level="0"></div></div>
+      <div class="c-uhff-nav-group">
+        <div class="c-heading-4" role="heading" aria-level="1">实用系统软件</div>
+        <ul class="c-list f-bare">
+          <li>
+            <a class="c-uhff-link" href="../Download/FlutasVideoDownLoad.html" target="_blank"><font color="darkpink">Flutas VideoDownLoad</font></a>
+          </li>
+          <li>
+            <a class="c-uhff-link" href="../Download/Modows.html" target="_blank"><font color="darkpink">Modows魔改系统</font></a>
+          </li>
+          <li>
+            <a class="c-uhff-link" href="../Download/ChatGPT.html" target="_blank"><font color="darkpink">Flutas AI 应用封装版</font></A>
+          </li>
+        </ul>
+      </div>
+      <div class="c-uhff-nav-group">
+        <div class="c-heading-4" role="heading" aria-level="2">工作室</div>
+        <ul class="c-list f-bare">
+          <li>
+            <a class="c-uhff-link" href="../f/notice.html" target="_blank"><font color="darkpink">Flutas公告</font></a>
+          </li>
+          <!-- <li>
+            <a class="c-uhff-link" href="./about/" target="_blank"><font color="darkpink">关于Flutas</font></a>
+          </li> -->
+          <li>
+            <a class="c-uhff-link" href="mailto:xbodwxbodw@outlook.com" target="_blank"><font color="darkpink">联系Flutas</font></a>
+          </li>
+        </ul>
+      </div>
+      <div class="c-uhff-nav-group">
+        <div class="c-heading-4" role="heading" aria-level="3">友情链接</div>
+        <ul class="c-list f-bare">
+          <li>
+            <a class="c-uhff-link" href="http://kemiweb.11245.ml/" target="_blank"><font color="darkpink">科米主页</font></a>
+          </li>
+          <li>
+            <a class="c-uhff-link" href="https://so4.xn--1jqvh855o.xyz/" target="_blank"><font color="darkpink">SO4</font></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- 页脚链接结束 -->
+</body>
+
+<!-- JS BEGIN -->
+<style>
+  body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .loading-div {
+    width: 1800px;
+    height: 720px;
+    background-color: #fff;
+    display: table-cell;
+    vertical-align: middle;
+    color: #555;
+    overflow: hidden;
+    text-align: center;
+  }
+  .loading-div::before {
+    display: inline-block;
+    vertical-align: middle;
+  } 
+  
+</style>
+<script>
+  document.onreadystatechange = function () {
+    if (document.readyState == "complete") {    
+        .(".loading-div").hide();
+        .('body').css('overflow'，'scroll');
+    }
+  }
+</script>
+<script>
+//   "use script";
+//   //This script by Xbodw.
+//   //此脚本由Xbodw编写, 请勿盗用!
+//   /*怎么会呢qwq,这是打表吧----DKX*/
+//  这个js会有时会卡在那个界面, 我改为了上面那个qwq---DKX
+  // var TapPage = function (Page) {
+  //   window.location.pathname = path;
+  // }
+
+  // var AddElement = function (ElementName, GetElement) {
+  //   var result = document.createElement(ElementName);
+  //   GetElement.appendChild(result);
+  //   return result;
+  // }
+
+//   var LoadingPageLevel = function () {
+//     var adder = `<div class="loading">
+//   <style><style type="text/css">html,
+// bocy,
+// div {
+//   margin: 0;
+//   padding: 0;
+// }
+ 
+// html,
+// body {
+//   width: 100%;
+//   height: 100%;
+// }
+ 
+// .loading {
+//   width: 100%;
+//   height: 100%;
+//   position:fixed;
+//   background-color: black;
+//   top: 0;
+//             bottom: 0;
+//             left: 0;
+//             right: 0;
+//             margin: auto;
+// }
+ 
+// .loading i {
+//   margin: auto;
+//   position: absolute;
+//   top: calc(50% - 40px);
+//   left: calc(50% - 40px);
+//   width: 80px;
+//   height: 80px;
+//   display: block;
+// }
+ 
+// .loading span {
+//   position: absolute;
+//   width: 100%;
+//   height: 100%;
+//   opacity: 0;
+//   color: black;
+// }
+ 
+// .loading span:after {
+//   content: "";
+//   display: block;
+//   position: absolute;
+//   left: 0px;
+//   top: 0px;
+//   width: 10px;
+//   height: 10px;
+//   background: var(--main, #00baff);
+//   border-radius: 50%;
+// }
+ 
+// .loading span:nth-child(1) {
+//   animation: i1 5.5s 0.2s infinite;
+// }
+ 
+// .loading span:nth-child(2) {
+//   animation: i2 5.5s 0.4s infinite;
+// }
+ 
+// .loading span:nth-child(3) {
+//   animation: i3 5.5s 0.6s infinite;
+// }
+ 
+// .loading span:nth-child(4) {
+//   animation: i4 5.5s 0.8s infinite;
+// }
+ 
+// .loading span:nth-child(5) {
+//   animation: i5 5.5s 1s infinite;
+// }
+ 
+// .loading span:nth-child(6) {
+//   animation: i6 5.5s 1.2s infinite;
+// }
+ 
+// @keyframes i1 {
+//   0% {
+//     opacity: 1;
+//     transform: rotate(190deg);
+//     animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+//   }
+//   7% {
+//     opacity: 1;
+//     transform: rotate(300deg);
+//     animation-timing-function: linear;
+//   }
+//   30% {
+//     opacity: 1;
+//     transform: rotate(450deg);
+//     animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+//   }
+//   39% {
+//     opacity: 1;
+//     transform: rotate(645deg);
+//     animation-timing-function: linear;
+//   }
+//   63% {
+//     opacity: 1;
+//     transform: rotate(800deg);
+//     animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+//   }
+//   68% {
+//     opacity: 1;
+//     transform: rotate(920deg);
+//     animation-timing-function: ease-in;
+//   }
+//   69% {
+//     opacity: 0;
+//     transform: rotate(930deg);
+//   }
+// }
+// @keyframes i2 {
+//   0% {
+//     opacity: 1;
+//     transform: rotate(180deg);
+//     animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+//   }
+//   7% {
+//     opacity: 1;
+//     transform: rotate(300deg);
+//     animation-timing-function: linear;
+//   }
+//   30% {
+//     opacity: 1;
+//     transform: rotate(450deg);
+//     animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+//   }
+//   39% {
+//     opacity: 1;
+//     transform: rotate(645deg);
+//     animation-timing-function: linear;
+//   }
+//   63% {
+//     opacity: 1;
+//     transform: rotate(800deg);
+//     animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+//   }
+//   68% {
+//     opacity: 1;
+//     transform: rotate(910deg);
+//     animation-timing-function: ease-in;
+//   }
+//   69% {
+//     opacity: 0;
+//     transform: rotate(920deg);
+//   }
+// }
+// @keyframes i3 {
+//   0% {
+//     opacity: 1;
+//     transform: rotate(170deg);
+//     animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+//   }
+//   7% {
+//     opacity: 1;
+//     transform: rotate(300deg);
+//     animation-timing-function: linear;
+//   }
+//   30% {
+//     opacity: 1;
+//     transform: rotate(450deg);
+//     animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+//   }
+//   39% {
+//     opacity: 1;
+//     transform: rotate(645deg);
+//     animation-timing-function: linear;
+//   }
+//   63% {
+//     opacity: 1;
+//     transform: rotate(800deg);
+//     animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+//   }
+//   68% {
+//     opacity: 1;
+//     transform: rotate(900deg);
+//     animation-timing-function: ease-in;
+//   }
+//   69% {
+//     opacity: 0;
+//     transform: rotate(910deg);
+//   }
+// }
+// @keyframes i4 {
+//   0% {
+//     opacity: 1;
+//     transform: rotate(160deg);
+//     animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+//   }
+//   7% {
+//     opacity: 1;
+//     transform: rotate(300deg);
+//     animation-timing-function: linear;
+//   }
+//   30% {
+//     opacity: 1;
+//     transform: rotate(450deg);
+//     animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+//   }
+//   39% {
+//     opacity: 1;
+//     transform: rotate(645deg);
+//     animation-timing-function: linear;
+//   }
+//   63% {
+//     opacity: 1;
+//     transform: rotate(800deg);
+//     animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+//   }
+//   68% {
+//     opacity: 1;
+//     transform: rotate(890deg);
+//     animation-timing-function: ease-in;
+//   }
+//   69% {
+//     opacity: 0;
+//     transform: rotate(900deg);
+//   }
+// }
+// @keyframes i5 {
+//   0% {
+//     opacity: 1;
+//     transform: rotate(150deg);
+//     animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+//   }
+//   7% {
+//     opacity: 1;
+//     transform: rotate(300deg);
+//     animation-timing-function: linear;
+//   }
+//   30% {
+//     opacity: 1;
+//     transform: rotate(450deg);
+//     animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+//   }
+//   39% {
+//     opacity: 1;
+//     transform: rotate(645deg);
+//     animation-timing-function: linear;
+//   }
+//   63% {
+//     opacity: 1;
+//     transform: rotate(800deg);
+//     animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+//   }
+//   68% {
+//     opacity: 1;
+//     transform: rotate(880deg);
+//     animation-timing-function: ease-in;
+//   }
+//   69% {
+//     opacity: 0;
+//     transform: rotate(880deg);
+//   }
+// }
+// @keyframes i6 {
+//   0% {
+//     opacity: 1;
+//     transform: rotate(140deg);
+//     animation-timing-function: cubic-bezier(0.29, 0.44, 0.32, 0.74);
+//   }
+//   7% {
+//     opacity: 1;
+//     transform: rotate(300deg);
+//     animation-timing-function: linear;
+//   }
+//   30% {
+//     opacity: 1;
+//     transform: rotate(450deg);
+//     animation-timing-function: cubic-bezier(0.53, 0.27, 0.37, 0.81);
+//   }
+//   39% {
+//     opacity: 1;
+//     transform: rotate(645deg);
+//     animation-timing-function: linear;
+//   }
+//   63% {
+//     opacity: 1;
+//     transform: rotate(800deg);
+//     animation-timing-function: cubic-bezier(0.5, 0.32, 0.82, 0.54);
+//   }
+//   68% {
+//     opacity: 1;
+//     transform: rotate(870deg);
+//     animation-timing-function: ease-in;
+//   }
+//   69% {
+//     opacity: 0;
+//     transform: rotate(880deg);
+//   }
+// }</style>
+//     <i>
+//         <span></span>
+//         <span></span>
+//         <span></span>
+//         <span></span>
+//         <span></span>
+//         <span></span>
+//     </i>
+// </div>`;
+//     var add = document.createElement('div');
+//     add.innerHTML = adder;
+//     document.body.appendChild(add);
+//   }
+
+//   var DeleteLoadingPageLevel = function () {
+//     document.querySelector('div[class="loading"]').remove();
+  // }
+
+</script>
+<!-- JS END -->
+
+<!-- 判断 -->
+<script type="text/javascript">
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+      alert('朋友，上古浏览器不支持呢~');
+  }
+
+  var checkm = function () {
+    var userAgentInfo = navigator.userAgent;
+    var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+    var flag = true;
+    for (var v = 0; v < Agents.length; v++) {
+      if (userAgentInfo.indexOf(Agents[v]) > 0) {
+        flag = false;
+        break;
+      }
+    }
+    if (flag == false) {
+      window.location.pathname = "../phone.html";
+    } else {
+      DeleteLoadingPageLevel();
+    }
+  }
+</script>
+
+<!-- 回到顶部开始 -->
+<script>
+  window.onload = function () {
+    let medusa = document.createElement('div');
+    medusa.setAttribute('class', 'medusa');
+    medusa.innerHTML = '' +
+      '<div><a onclick="goTop()" title="Top"><img class="pass" src="./Resources/top.png"></a></div>' +
+      '<div><a href="http://www.github.com/Xbodw/xbodw.Github.io/" title="Github" target="_blank"><img class="pass" src="./Resources/github.png"></a></div>' +
+      '<div><a href="./feedback/" title="帮助" target="_blank"><img class="pass" src="./Resources/help.png"></a></div>';
+    document.body.appendChild(medusa);
+  }
+
+  function CheckImgExists(url) {
+    let ImgObj = new Image();
+    ImgObj.src = url;
+    return ImgObj.width > 0;
+  }
+
+  function goTop() {
+    let scrollToTop = setInterval(function () {
+      let pos = window.pageYOffset;
+      if (pos > 0) {
+        window.scrollTo(0, pos - 20);
+      } else {
+        window.clearInterval(scrollToTop);
+      }
+    }, 10);
+  }
+</script>
+<style>
+  .medusa {
+    position: fixed;
+    right: 1%;
+    bottom: 15%;
+    width: 50px;
+    border: 1px solid #cdcccc;
+    background-color: white;
+    font-size: 20px;
+    z-index: 1040;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .medusa>div>a>img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .medusa>div {
+    margin: 5px 0 5px 9px;
+  }
+
+  .medusa>div>a {
+    padding: 0 0 7px 0;
+  }
+</style>
+<!-- 回到顶部结束 -->
+</html>
+<!-- 哈哈 简单优化调整了首页 ------DKX -->
