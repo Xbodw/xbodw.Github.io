@@ -17,7 +17,7 @@ fetch(`passages/${articleId}/${articleId}.md`)
     // 生成目录项
     const headings = articleContent.querySelectorAll('h2, h3, h4, h5, h6');
     const toc = document.querySelector('.toc');
-    headings.forEach((heading， index) => {
+    headings.forEach((heading, index) => {
       const anchor = `#${heading.getAttribute('id')}`;
       const text = heading.textContent;
       const level = parseInt(heading.tagName.substring(1));
@@ -30,7 +30,7 @@ fetch(`passages/${articleId}/${articleId}.md`)
       toc.appendChild(li);
 
       // 监听目录项点击事件
-      a.addEventListener('click'， event => {
+      a.addEventListener('click', event => {
         event.preventDefault();
         const target = document.querySelector(`${anchor}`);
         target.scrollIntoView({behavior: 'smooth'});
