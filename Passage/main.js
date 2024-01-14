@@ -55,4 +55,8 @@ fetch(`passages/${articleId}/index.json`)
     });
 }
 hljs.highlightAll();
+hljs.initLineNumbersOnLoad({
+            // singleLine:true,
+            // startFrom: 5,
+        });
 at.AddCodeCopy();
