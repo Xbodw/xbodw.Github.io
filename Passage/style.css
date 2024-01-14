@@ -67,3 +67,24 @@ span.copy-button {
     color: var(--p-color);
     cursor: pointer;
 }
+
+.slidebar {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 60px;
+    background-color: #f2f2f2;
+}
+
+body {
+    background-color: #f9f9f9;
+}
+
+* {
+    font-family: "Microsoft YaHei UI Light";
+}
+
+h2#titlea {
+    position: absolute;
+    left: 10px;
+}
