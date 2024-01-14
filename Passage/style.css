@@ -38,3 +38,32 @@ body {
   color: #333;
   font-size: 14px;
 }
+code {
+	padding: .2em .4em;
+    margin: 0;
+    font-size: 85%;
+    white-space: break-spaces;
+    /* background-color: rgba(175,184,193,0.2); */
+    border-radius: 6px;
+}
+
+code {
+     border-radius: 10px;
+	font-family: Consolas,"Microsoft YaHei UI Light";
+	font-size: 91%;
+    position: relative;
+}
+
+pre {
+    position: relative;
+}
+span.copy-button {
+    float: right;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    font-size: 90%;
+    user-select: none;
+    color: var(--p-color);
+    cursor: pointer;
+}
