@@ -37,18 +37,19 @@ try {
                     target.scrollIntoView({ behavior: 'smooth' });
                 });
             });
+            hljs.highlightAll();
+            hljs.initLineNumbersOnLoad({
+                // singleLine:true,
+                // startFrom: 5,
+            });
+            at.AddCodeCopy();
         });
     fetch(`passages/${articleId}/index.json`)
         .then(response => response.text()).then(json => {
             var config = JSON.parse(json);
             document.title = config.title;
         });
-    hljs.highlightAll();
-    hljs.initLineNumbersOnLoad({
-        // singleLine:true,
-        // startFrom: 5,
-    });
-    at.AddCodeCopy();
+    
 } catch (e) {
     Swal.fire({
         title: "文章加载失败",
