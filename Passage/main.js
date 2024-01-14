@@ -46,3 +46,4 @@ fetch(`passages/${articleId}/index.json`)
 } catch(e) {
     Swal.fire(e);
 }
+hljs.highlightAll();
