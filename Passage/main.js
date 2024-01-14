@@ -4,6 +4,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const articleId = urlParams.get('id');
 
 // 加载 Markdown 文件
+try {
 fetch(`passages/${articleId}/${articleId}.md`)
   .then(response => response.text())
   .then(markdown => {
@@ -37,3 +38,11 @@ fetch(`passages/${articleId}/${articleId}.md`)
       });
     });
   });
+fetch(`passages/${articleId}/index.json`)
+  .then(response => response.text()).then(json => {
+      var config = JSON.parse(json);
+      document.title = config.title;
+  });
+} catch(e) {
+    Swal.fire(e);
+}
