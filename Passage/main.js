@@ -44,6 +44,15 @@ fetch(`passages/${articleId}/index.json`)
       document.title = config.title;
   });
 } catch(e) {
-    Swal.fire(e);
+    Swal.fire({
+      title: "文章加载失败",
+      text: "你似乎来到了一片虚无",
+      icon: "error",
+      showCloseButton: true,
+      showCancelButton: false,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "确定"
+    });
 }
 hljs.highlightAll();
+at.AddCodeCopy();
