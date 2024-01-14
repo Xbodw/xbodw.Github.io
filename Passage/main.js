@@ -5,8 +5,8 @@ const articleId = urlParams.get('id');
 
 // 加载 Markdown 文件
 fetch(`passages/${articleId}/${articleId}.md`)
-  。then(response => response.text())
-  。then(markdown => {
+  .then(response => response.text())
+  .then(markdown => {
     // 将 Markdown 转换为 HTML
     const html = marked.parse(markdown);
 
@@ -20,12 +20,12 @@ fetch(`passages/${articleId}/${articleId}.md`)
     headings.forEach((heading， index) => {
       const anchor = `#${heading.getAttribute('id')}`;
       const text = heading.textContent;
-      const level = parseInt(heading.tagName。substring(1));
+      const level = parseInt(heading.tagName.substring(1));
       const li = document.createElement('li');
       const a = document.createElement('a');
       a.href = anchor;
       a.textContent = text;
-      a.classList。add(`level-${level}`);
+      a.classList.add(`level-${level}`);
       li.appendChild(a);
       toc.appendChild(li);
 
