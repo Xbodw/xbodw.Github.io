@@ -1,6 +1,6 @@
 
 // 获取 URL 参数
-const urlParams = new URLSearchParams(window.location。search);
+const urlParams = new URLSearchParams(window.location.search);
 const articleId = urlParams.get('id');
 
 // 加载 Markdown 文件
