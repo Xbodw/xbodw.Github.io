@@ -253,8 +253,8 @@
 <script>
   document.onreadystatechange = function () {
     if (document.readyState == "complete") {    
-        .(".loading-div").hide();
-        .('body').css('overflow'，'scroll');
+        document.querySelector(".loading-div").hide();
+        document.body.style.overflow = 'scroll';
     }
   }
 </script>
