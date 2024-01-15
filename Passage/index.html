@@ -1,26 +1,92 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="UTF-8">
-  <title>Vendor Passage</title>
-  <link rel="stylesheet" href="https://xbodw.github.io/Resources/code/styles/vs.min.css">
-	<link rel="stylesheet" href="https://xbodw.github.io/Resources/swal.css">
-	<link rel="stylesheet" href="https://xbodw.github.io/Resources/root.css">
+    <meta charset="UTF-8">
+    <title>Vendor Passage</title>
+    <link rel="stylesheet" href="https://xbodw.github.io/Resources/code/styles/vs.min.css">
+    <link rel="stylesheet" href="https://xbodw.github.io/Resources/swal.css">
+    <link rel="stylesheet" href="https://xbodw.github.io/Resources/root.css">
     <link href="https://xbodw.github.io/Resources/Flutas.ico" rel="icon">
-	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
-	<script src="https://xbodw.github.io/Resources/code/linenumber.js"></script>
-	<script src="https://xbodw.github.io/Resources/swaf2.js"></script>
-	<script src="https://xbodw.github.io/Resources/flutas.at.min.js"></script>
-	<script src="https://xbodw.github.io/Resources/aluk.js"></script>
-  <link rel="stylesheet" href="style.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+    <script src="https://xbodw.github.io/Resources/code/linenumber.js"></script>
+    <script src="https://xbodw.github.io/Resources/swaf2.js"></script>
+    <script src="https://xbodw.github.io/Resources/flutas.at.min.js"></script>
+    <script src="https://xbodw.github.io/Resources/aluk.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .medusa {
+            position: fixed;
+            right: 1%;
+            bottom: 15%;
+            width: 50px;
+            border: 1px solid #cdcccc;
+            background-color: white;
+            font-size: 20px;
+            z-index: 1040;
+            -webkit-backface-visibility: hidden;
+        }
+
+        .medusa>div>a>img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .medusa>div {
+            margin: 5px 0 5px 9px;
+        }
+
+        .medusa>div>a {
+            padding: 0 0 7px 0;
+        }
+    </style>
+
 </head>
+
 <body>
-  <div class="article-content"></div>
-  <div class="sidebar">
-    <ul class="toc"></ul>
-  </div>
-<div class="slidebar"><h2 id="titlea">Flutas文档</h2></div>
-  <script src="../Resources/marked.min.js"></script>
-  <script src="main.js"></script>
+    <div class="article-content"></div>
+    <div class="sidebar">
+        <ul class="toc"></ul>
+    </div>
+    <div class="slidebar">
+        <h2 id="titlea">Flutas文档</h2>
+    </div>
+    <div class="medusa">
+        <div><a onclick="goTop()" title="Top"><img class="pass" src="./Resources/top.png"></a></div>
+        <div><a href="http://www.github.com/Xbodw/xbodw.Github.io/" title="Github" target="_blank"><img class="pass"
+                    src="./Resources/github.png"></a></div>
+        <div><a href="./feedback/" title="帮助" target="_blank"><img class="pass" src="./Resources/help.png"></a></div>
+    </div>
+    <script src="../Resources/marked.min.js"></script>
+    <script src="main.js"></script>
+    <script>
+        window.onload = function () {
+            let medusa = document.createElement('div');
+            medusa.setAttribute('class', 'medusa');
+            medusa.innerHTML = '' +
+                '<div><a onclick="goTop()" title="Top"><img class="pass" src="./Resources/top.png"></a></div>' +
+                '<div><a href="http://www.github.com/Xbodw/xbodw.Github.io/" title="Github" target="_blank"><img class="pass" src="./Resources/github.png"></a></div>' +
+                '<div><a href="./feedback/" title="帮助" target="_blank"><img class="pass" src="./Resources/help.png"></a></div>';
+            document.body.appendChild(medusa);
+        }
+
+        function CheckImgExists(url) {
+            let ImgObj = new Image();
+            ImgObj.src = url;
+            return ImgObj.width > 0;
+        }
+
+        function goTop() {
+            let scrollToTop = setInterval(function () {
+                let pos = window.pageYOffset;
+                if (pos > 0) {
+                    window.scrollTo(0, pos - 20);
+                } else {
+                    window.clearInterval(scrollToTop);
+                }
+            }, 10);
+        }
+    </script>
 </body>
+
 </html>
