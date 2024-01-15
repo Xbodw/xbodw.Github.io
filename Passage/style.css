@@ -74,6 +74,7 @@ span.copy-button {
     width: 100%;
     height: 60px;
     background-color: #f2f2f2;
+    opacity: 60%;
 }
 
 body {
