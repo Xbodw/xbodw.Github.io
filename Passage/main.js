@@ -62,3 +62,17 @@ try {
     });
 }
 
+function Progress(e) {
+    this.document.head.innerHTML += href.progressbar;
+    this.document.body.innerHTML += href.divprogress;
+    let s = aluk("a");
+    s.array.forEach(element => {
+        if(element.href != null && element.href != "" && element.href != undefined) {
+            s.addEventListener('click',function(event) {
+                href.startLoading(event);
+            })
+        }
+    });
+}
+Progress();
+
