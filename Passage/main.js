@@ -43,6 +43,7 @@ try {
                 // startFrom: 5,
             });
             at.AddCodeCopy();
+            linka();
         });
     fetch(`passages/${articleId}/index.json`)
         .then(response => response.text()).then(json => {
@@ -62,17 +63,5 @@ try {
     });
 }
 
-function Progress(e) {
-    this.document.head.innerHTML += href.progressbar;
-    this.document.body.innerHTML += href.divprogress;
-    let s = aluk("a");
-    s.array.forEach(element => {
-        if(element.href != null && element.href != "" && element.href != undefined) {
-            s.addEventListener('click',function(event) {
-                href.startLoading(event);
-            })
-        }
-    });
-}
-Progress();
+linka();
 
