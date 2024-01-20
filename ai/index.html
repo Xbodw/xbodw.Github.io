@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="google" content="notranslate">
+  <meta name="Edge" content="notranslate">
+  <meta name="Firfox" content="notranslate">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="referrer" content="no-referrer">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="images/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="Feature.css">
+  <link rel="stylesheet" id="theme-mode" href="./theme/light.css">
+  <link rel="stylesheet" id="pid-mode" href="./theme/pc.css">
+  <link rel="stylesheet" id="theme-style" href="github.min.css">
+  <link rel="stylesheet" href="ChatGPTMain.css">
+  <link rel="stylesheet" href="swal.css">
+  <style id="pp"></style>
+  <title>Flutas AI</title>
+</head>
+
+<body>
+  <div id="trips"
+    style="display:none;background-color:yellow;border-radius:100%;position:absolute;width:20px;height:20px;z-index:3;pointer-events: none;">
+  </div>
+  <div class="left">
+    <ul class="ul_left"><span style="position:fixed;top:0px;left:20px;;font-size:150%;"
+        onclick="$('.left')[0].setAttribute('class','left');">×</span><img src="ChatGPT.png" width="86">
+      <h1 style="display:inline;">Flutas AI</h1><br><br><br><br><br><a href="javascript:;" class="aButton"
+        onclick="checkupdate()">检测Flutas AI更新</a><br><br><a id="About" class="aButton" target="blank_">关于Flutas
+        AI..</a><br><br><span>从本地加载json聊天文件</span><br><a href="javascript:void(0);" class="file">加载json文件<input
+          type="file" id="loadjson" accept="application/json" value=""></a><br><br><a class="aButton" id="Clear"
+        onclick="ClearTalk()">清除聊天记录</a><br><br>
+      <div><label id="active-ai">Flutas AI 许可证 未激活</label><a id="Dev" class="aButton" onclick="pro()">激活 Flutas AI</a>
+      </div><br><br>
+      <div class="checkBox"><input type="checkbox" id="Devx"><label for="checkBoxInput"
+          onclick="if($('#Devx')[0].checked) { $('#Devx')[0].checked = false; $('.devpanel')[0].style.display = 'none'; } else { $('#Devx')[0].checked = true;$('.devpanel')[0].style.display = 'block'; }"></label>
+      </div><span>实验性功能</span><br><br>
+      <div class="devpanel" style="display: none;"><span>ChatGPT API key</span><br><input type="text" id="keyinput"
+          placeholder="在这里输入ChatGPT API Key"><br><label id="tipipt" style="
+    color: red;
+    font-size: 80%;
+">请键入API Key.</label><br><br></div>
+    </ul>
+  </div>
+  <div class="bk">
+    <h2>Flutas AI</h2>
+    <ul class="ul_top">
+      <li><button id="toggle-mode" title="切换模式"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+            aria-hidden="true">
+            <path
+              d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z">
+            </path>
+          </svg></button></li>
+      <li><input type="color" id="color-picker" style="*/ display:none /*">
+        <p id="color-text"></p>
+      </li>
+      <li><a id="settings" title="打开Flutas AI 选项" onclick="$('.left')[0].setAttribute('class','left active');"><img
+            src="Settings.png"></a></li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="StopRepose" style="display:none">&nbsp;~ 停止解析</div>
+    <div class="row">
+      <div class="col-xs-12">
+      </div>
+      <div class="answer">
+        <br>
+        <br>
+        <br>
+        <div class="rop" style="display:none;"><span>快捷指令</span><br><br>&nbsp;<a id="sp"
+            onclick="$('#chatInput').val(this.textContent);">你是什么模型?</a>&nbsp;<a id="sp"
+            onclick="$('#chatInput').val(this.textContent);">用Csharp反色图片</a>&nbsp;<a id="sp"
+            onclick="$('#chatInput').val(this.textContent);">中国航天的伟大历史</a>&nbsp;<a id="sp"
+            onclick="$('#chatInput').val(this.textContent);">写一首赞美祖国的诗</a>&nbsp;</div>
+        <div id="chatWindow" crossOrigin="anonymous">
+          <div class="tip"><img src="ChatGPT.png" width="128">
+            <h1 style="display:inline;">Flutas AI</h1><br><br><span>Flutas AI是一个基于ChatGPT
+              Api接口优化制作的人工智能聊天工具,它可以帮助您完成以下功能:
+              1.聊天<br>
+              2.解答问题<br>
+              3.写代码<br>
+              ......
+
+
+              要开始聊天,请在下方的文本框中输入内容,并按下发送
+              <hr><span style="color:red"><a target="blank_">Xbodw</a> <a target="blank_">科米主页</a> 提供技术支持
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <input id="chatInput" class="form-control" rows="1" placeholder="来说点什么吧. (输入 \ 可查看快捷指令)"></input>
+          <span class="input-group-btn">
+            <button id="chatBtn" tabindex="-1" title="发送消息" type="button">&nbsp;</button><button id="savejson"
+              title="保存聊天记录为json文件" tabindex="-1" type="button">&nbsp;</button>
+            <br><span style="font-size:80%;">如果点击发送按钮没反应,请按按
+              <a>Enter</a>&nbsp;键发送信息哦</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+<script>if (typeof module === 'object') { window.module = module; module = undefined; }</script>
+<script src="jquery.js"></script>
+<script>if (window.module) module = window.module;</script>
+<script src="marked.min.js"></script>
+<script src="highlight.min.js"></script>
+<script>
+  window.nrequire = require;
+
+  var chatInput = document.getElementById('chatInput');
+  var chatinpt = $('#chatInput');
+  chatinpt.focus();
+
+  var add = document.getElementById('About');
+  /*
+  const ipc = nrequire('electron').ipcRenderer
+  
+  add.onclick = ()=>
+  {
+         ipc.send('add');
+  }
+  */
+
+  $('#About')[0].addEventListener('click', (e) => {
+    Swal.fire({
+      title: '关于 Flutas AI',
+      text: 'Flutas AI\n Version 4.2.6-hotfix3',
+      icon: 'success'
+    });
+  })
+
+</script>
+<script src="vendor.js"></script>
+<script src="swaf2.js"></script>
+<script src="clipboard.js"></script>
+
+</html>
