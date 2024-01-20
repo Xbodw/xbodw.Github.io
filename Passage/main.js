@@ -62,6 +62,10 @@ try {
         confirmButtonText: "确定"
     });
 }
-
+var paralought = window.decodeURIComponent(window.location.href.split("#")[1]);
+if(paralought != 'undefined') {
+    const target = document.querySelector(('#' + `${paralought}`).toLocaleLowerCase());
+    target.scrollIntoView({ behavior: 'smooth' });
+}
 linka();
 
