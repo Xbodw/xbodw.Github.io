@@ -1,0 +1,7 @@
+.col-xs-12 {
+    position: fixed;
+    bottom: 20px;
+}
+#chatInput {
+    width: 80%;
+}
