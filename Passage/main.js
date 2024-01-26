@@ -44,6 +44,11 @@ try {
             });
             at.AddCodeCopy();
             linka();
+            var paralought = window.decodeURIComponent(window.location.href.split("#")[1]);
+            if(paralought != 'undefined') {
+                const target = document.querySelector(('#' + `${paralought}`).toLocaleLowerCase());
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     fetch(`passages/${articleId}/index.json`)
         .then(response => response.text()).then(json => {
@@ -61,11 +66,6 @@ try {
         confirmButtonColor: "#DD6B55",
         confirmButtonText: "确定"
     });
-}
-var paralought = window.decodeURIComponent(window.location.href.split("#")[1]);
-if(paralought != 'undefined') {
-    const target = document.querySelector(('#' + `${paralought}`).toLocaleLowerCase());
-    target.scrollIntoView({ behavior: 'smooth' });
 }
 linka();
 
