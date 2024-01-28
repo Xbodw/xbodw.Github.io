@@ -21,6 +21,9 @@ try {
             headings.forEach((heading, index) => {
                 const anchor = `#${heading.getAttribute('id')}`;
                 const text = heading.textContent;
+                for (let i = 1; i < level; i++) {
+                  text = " " + text;
+                }
                 const level = parseInt(heading.tagName.substring(1));
                 const li = document.createElement('li');
                 const a = document.createElement('a');
