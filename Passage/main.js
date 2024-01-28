@@ -13,7 +13,7 @@ try {
 
             // 将 HTML 显示在页面上
             const articleContent = document.querySelector('.article-content');
-            articleContent.innerHTML = html;
+            articleContent.innerHTML = `<br><br>` + html;
 
             // 生成目录项
             const headings = articleContent.querySelectorAll('h2, h3, h4, h5, h6');
