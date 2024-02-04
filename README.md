@@ -4,8 +4,6 @@
 
 https://xbodw.github.io/
 
-http://flutas.cqoj.xyz/
-
 https://xbodw-github-io.pages.dev/
 
 ## Star History
